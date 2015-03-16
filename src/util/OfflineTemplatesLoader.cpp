@@ -79,7 +79,7 @@ namespace rl2d
 		const int objectNum = objectsConfig.object_config_size();
 		CHECK(objectNum>0) << "No template images.";
 
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(int i=0; i<objectNum; ++i)
 		{
 			const ObjectConfig &objectConfig = objectsConfig.object_config(i);
@@ -133,7 +133,7 @@ namespace rl2d
 			// read obj file
 			GLMmodel *modelTmp = glmReadOBJ(const_cast<char*>(modelPath.c_str()));
 
-#pragma omp critical
+//#pragma omp critical
 			{
 				images.insert(std::pair<int, std::vector<cv::Mat> >(classId, imgs));
 				boundingBoxes.insert(std::pair<int, std::vector<cv::Rect> >(classId, bbs));

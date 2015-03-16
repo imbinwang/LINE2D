@@ -4,7 +4,7 @@
 
 #include "..\include\GradientCalculator.h"
 
-//#define _TIMER_
+#define _TIMER_
 #ifdef _TIMER_
 #include "..\include\util\CvUtility.h"
 static Timer t;
@@ -86,7 +86,7 @@ namespace rl2d
 		const int KERNEL_SIZE = 5;
 		cv::Mat smoothed;
 		cv::GaussianBlur(src, smoothed, 
-			cv::Size(KERNEL_SIZE, KERNEL_SIZE), 0.0, 0.0, cv::BORDER_REPLICATE);
+			cv::Size(KERNEL_SIZE, KERNEL_SIZE), 0.0, 0.0, cv::BORDER_DEFAULT);
 #ifdef _TIMER_
 		t.stop();
 		double gbt=t.time();
@@ -99,10 +99,10 @@ namespace rl2d
 		// use sobel kernel to compute derivatives in x direction and y direction
 		cv::Mat sobel_dx;
 		cv::Mat sobel_dy;
-		cv::Sobel(smoothed, sobel_dx, CV_32F, 1, 0, 3, 1.0, 0.0, cv::BORDER_REPLICATE);
-		cv::Sobel(smoothed, sobel_dy, CV_32F, 0, 1, 3, 1.0, 0.0, cv::BORDER_REPLICATE);
-		//cv::Scharr(smoothed, sobel_dx, CV_32F, 1, 0, 1.0, 0.0, cv::BORDER_REPLICATE);
-		//cv::Scharr(smoothed, sobel_dy, CV_32F, 0, 1, 1.0, 0.0, cv::BORDER_REPLICATE);
+		cv::Sobel(smoothed, sobel_dx, CV_32F, 1, 0, 3, 1.0, 0.0, cv::BORDER_DEFAULT);
+		cv::Sobel(smoothed, sobel_dy, CV_32F, 0, 1, 3, 1.0, 0.0, cv::BORDER_DEFAULT);
+		//cv::Scharr(smoothed, sobel_dx, CV_32F, 1, 0, 1.0, 0.0, cv::BORDER_DEFAULT);
+		//cv::Scharr(smoothed, sobel_dy, CV_32F, 0, 1, 1.0, 0.0, cv::BORDER_DEFAULT);
 #ifdef _TIMER_
 		t.stop();
 		double st=t.time();

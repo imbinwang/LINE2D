@@ -49,14 +49,14 @@ int main(int argc, char *argv[])
 		capture >> color;
 
 		detector->match(color, threshold, matches);
-		//MergeMatches(matches, detector, mergedMatches, mergedRects);
+		MergeMatches(matches, detector, mergedMatches, mergedRects);
 
 		cv::Mat displayImg = color.clone();
-		DrawMatches(matches, detector, objectsConfig, 1, displayImg);
+		//DrawMatches(matches, detector, objectsConfig, 100, displayImg);
 		
 		if(matches.size()>0)
 			ProjectModel2Img(detector, matches[0], camCalib, templatePoses, objModels, CV_RGB(255,255,255), displayImg);
-		//DrawMergedMatches(mergedMatches, mergedRects, objectsConfig, 10, displayImg);
+		DrawMergedMatches(mergedMatches, mergedRects, objectsConfig, 10, displayImg);
 
 		printf("matches size %d\n", (int)matches.size());
 
