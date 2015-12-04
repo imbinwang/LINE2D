@@ -1,0 +1,70 @@
+package rl2d;
+
+// the basic information of one object that will be detected 
+message ObjectConfig
+{
+	required int32 id = 1; // object unique id 
+	required string name = 2; // object name
+	//required string img_dir = 3; // the directory which template images are stored (already be rendered offline)
+	//optional string pose_path = 4; // the pose file in which the corresponding 6 DOF pose parameters of each template image are stored
+	optional string model_path = 5; // the 3d model file 
+	
+	message ImageDirAndPoseFilePair
+	{
+		required string img_dir = 1; // the directory which template images are stored (already be rendered offline)
+		required string pose_path = 2; // the pose file in which the corresponding 6 DOF pose parameters of each template image are stored
+	}
+	repeated ImageDirAndPoseFilePair imageDir_poseFile_pair = 3; // each object may be contain multiple template image directory
+	repeated string color_hist_dir = 4; // for calculating the color histogram for each object
+										// 一种形状的物体可能有多种颜色（例如lego），因此会出现一个物体对应多个颜色直方图的情况
+										// 也有可能不同形状的物体颜色相同
+	
+	message OnlineRenderingParams // paramers to define the camera pose when rendering by opengl
+	{
+		required float min_radius = 1;
+		required float max_radius = 2;
+		required float radius_step = 3;
+		required float min_latitude = 4;
+		required float max_latitude = 5;
+		required float latitude_step = 6;
+		required float min_longitude = 7;
+		required float max_longitude = 8;
+		required float longitude_step =9;
+		required float min_inplane = 10;
+		required float max_inplane = 11;
+		required float inplane_step = 12;
+	}
+	optional OnlineRenderingParams online_rendering_params = 6;
+		
+	message RGB // rgb color
+	{
+		optional int32 R = 1 [default = 255];
+		optional int32 G = 2 [default = 0];
+		optional int32 B = 3 [default = 0];
+	}
+	optional RGB bounding_box_color = 7; // the color of the bounding box
+}
+
+// the vector for multiple ObjectConfig
+message ObjectsConfig
+{
+	repeated ObjectConfig object_config = 1; 
+}
+
+// camera intrinsic parameters and distortions (at most 5 parameters)
+message CameraIntrinsic
+{
+	required float fx = 1;
+	required float fy = 2;
+	required float cx = 3;
+	required float cy = 4;
+	repeated float distortions = 5 [packed = true];
+}
+
+// detector configration
+message DetectorConfig
+{
+	required float match_threshold = 1;
+	repeated float steps_each_pyramid = 2 [packed = true];
+}
+

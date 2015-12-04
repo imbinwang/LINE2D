@@ -18,6 +18,7 @@ namespace rl2d
 	{
 	}
 
+#if 0
 	// load template images
 	bool OfflineTemplatesLoader::loadTemplateImages(
 		const ObjectsConfig &objectsConfig,
@@ -66,6 +67,7 @@ namespace rl2d
 
 		return true;
 	}
+#endif
 
 	// load template images, poses of images, obj model file
 	bool OfflineTemplatesLoader::loadTemplateImagesAndPoses(
@@ -79,19 +81,20 @@ namespace rl2d
 		const int objectNum = objectsConfig.object_config_size();
 		CHECK(objectNum>0) << "No template images.";
 
-//#pragma omp parallel for
+		//#pragma omp parallel for
 		for(int i=0; i<objectNum; ++i)
 		{
 			const ObjectConfig &objectConfig = objectsConfig.object_config(i);
 			const int classId = objectConfig.id();
 			const std::string &className = objectConfig.name();
-			const std::string &imagesDir = objectConfig.img_dir();
-			const std::string &posePath = objectConfig.pose_path();
+			//const std::string &imagesDir = objectConfig.img_dir();
+			//const std::string &posePath = objectConfig.pose_path();
 			const std::string &modelPath = objectConfig.model_path();
 
-			CHECK(!posePath.empty())<< "Please configure the file path of pose file.";
+			//CHECK(!posePath.empty())<< "Please configure the file path of pose file.";
 			CHECK(!modelPath.empty())<< "Please configure the file path of obj file.";
 
+#if 0
 			// read images
 			std::vector<std::string> fileName;
 			CHECK(GetFileNames(imagesDir, fileName))
@@ -129,11 +132,57 @@ namespace rl2d
 
 				posesParam.push_back(poseTmp);
 			}
+#endif
+
+			// read template images and corresponding poses
+			std::vector<cv::Mat> imgs;
+			std::vector<cv::Rect> bbs;
+			std::vector<cv::Matx61f> posesParam;
+			for(int j=0; j<objectConfig.imagedir_posefile_pair_size(); ++j)
+			{
+				const ObjectConfig_ImageDirAndPoseFilePair& imagedir_posefile = objectConfig.imagedir_posefile_pair(j);
+				const std::string &imagesDir = imagedir_posefile.img_dir();
+				const std::string &posePath = imagedir_posefile.pose_path();
+
+				// read images
+				std::vector<std::string> fileName;
+				CV_Assert(GetFileNames(imagesDir, fileName));
+
+				for(int k=0; k<(int)fileName.size(); ++k)
+				{
+					std::string file = imagesDir + "/" + fileName[k];
+					cv::Mat img=cv::imread( file );	
+
+					//extract a new template for current image
+					cv::Rect tmplBoundingBox;
+					int template_id = detector->addTemplate(img, classId, &tmplBoundingBox);
+
+					//save all images, it is not a good idea when template images are large
+					//but to do matches refinement, there's not good way
+					imgs.push_back(img);
+					bbs.push_back(tmplBoundingBox);
+				}
+
+				// read poses
+				std::ifstream poseInFile(posePath.c_str());
+				CV_Assert(poseInFile.is_open());
+
+				for(int j=0; j<(int)fileName.size(); ++j)
+				{
+					cv::Matx61f poseTmp;
+
+					// rotation vector and translation vector
+					poseInFile >> poseTmp.val[0] >> poseTmp.val[1] >> poseTmp.val[2]
+					>> poseTmp.val[3] >> poseTmp.val[4] >> poseTmp.val[5];
+
+					posesParam.push_back(poseTmp);
+				}
+			}
 
 			// read obj file
 			GLMmodel *modelTmp = glmReadOBJ(const_cast<char*>(modelPath.c_str()));
 
-//#pragma omp critical
+			//#pragma omp critical
 			{
 				images.insert(std::pair<int, std::vector<cv::Mat> >(classId, imgs));
 				boundingBoxes.insert(std::pair<int, std::vector<cv::Rect> >(classId, bbs));

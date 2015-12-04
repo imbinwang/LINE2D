@@ -9,6 +9,14 @@
 #include "..\include\Detector.h"
 #include "..\include\util\GLRender.h"
 
+#define HS_COLOR_REFINE
+#ifdef HS_COLOR_REFINE
+#include "..\include\util\MatchRefiner.h"
+#define HBIN 30
+#define SBIN 4
+#define HS_REFINE_THRESHOLD 0.2 //(0.0-1.0)
+#endif
+
 using namespace rl2d;
 
 int main(int argc, char *argv[])
@@ -18,7 +26,7 @@ int main(int argc, char *argv[])
 		0., 0.,13.608371846992902};
 	CameraCalibration camCalib(804.53,804.53,319.5,239.5,distortionCoeff);
 
-	std::string configFile = "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\config.prototxt";
+	std::string configFile = "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\garden\\config.prototxt";
 	ObjectsConfig objectsConfig;
 	ReadProtoFromTextFileOrDie(configFile.c_str(), &objectsConfig);
 
@@ -30,9 +38,15 @@ int main(int argc, char *argv[])
 	std::map<int, std::vector<cv::Rect> > boundingBoxes;
 	std::map<int, std::vector<cv::Matx61f> > templatePoses;
 	std::map<int, GLMmodel*> objModels; 
+
 	//offlineLoader.loadTemplateImages(objectsConfig, detector, images, boundingBoxes);
 	offlineLoader.loadTemplateImagesAndPoses(objectsConfig, detector, 
 		images, boundingBoxes, templatePoses, objModels);
+
+#ifdef HS_COLOR_REFINE
+	std::map<int, std::vector<cv::Mat> > templateColorHists;
+	MatchRefiner::offlineCalculateHSHist(objectsConfig, HBIN, SBIN, templateColorHists);
+#endif
 
 	// open camera
 	cv::VideoCapture capture(0);
@@ -50,12 +64,15 @@ int main(int argc, char *argv[])
 
 		detector->match(color, threshold, matches);
 		MergeMatches(matches, detector, mergedMatches, mergedRects);
+#ifdef HS_COLOR_REFINE
+		MatchRefiner::refine(mergedMatches, mergedRects, color, boundingBoxes, templateColorHists, HBIN, SBIN, HS_REFINE_THRESHOLD);
+#endif
 
 		cv::Mat displayImg = color.clone();
 		//DrawMatches(matches, detector, objectsConfig, 100, displayImg);
 		
-		if(matches.size()>0)
-			ProjectModel2Img(detector, matches[0], camCalib, templatePoses, objModels, CV_RGB(255,255,255), displayImg);
+		//if(matches.size()>0)
+			//ProjectModel2Img(detector, matches[0], camCalib, templatePoses, objModels, CV_RGB(255,255,255), displayImg);
 		DrawMergedMatches(mergedMatches, mergedRects, objectsConfig, 10, displayImg);
 
 		printf("matches size %d\n", (int)matches.size());
