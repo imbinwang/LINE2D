@@ -22,7 +22,7 @@ message ObjectsConfig
 											// 一种形状的物体可能有多种颜色（例如lego），因此会出现一个物体对应多个颜色直方图的情况
 											// 也有可能不同形状的物体颜色相同
 		
-		message OnlineRenderingParams // paramers to define the camera pose when rendering by opengl
+		message OnlineRenderingParams // paramers to define the viewpoints when rendering by opengl
 		{
 			required float min_radius = 1;
 			required float max_radius = 2;
@@ -47,13 +47,14 @@ message ObjectsConfig
 			optional int32 G = 2 [default = 0];
 			optional int32 B = 3 [default = 0];
 		}
-		optional RGB bounding_box_color = 7; // the color of the bounding box
+		optional RGB bounding_box_color = 7; // the color of the bounding box drawed in detected images
 	}
 
 	repeated ObjectConfig object_config = 1; 
 }
 
-// camera intrinsic parameters and distortions (at most 5 parameters)
+// camera intrinsic parameters and distortions (5 distortion parameters)
+// the camera should be calibrated in advance
 message CameraIntrinsic
 {
 	required float fx = 1;
@@ -66,14 +67,14 @@ message CameraIntrinsic
 // detector configuration
 message DetectorConfig
 {
-	required float match_threshold = 1;
-	repeated int32 steps_each_pyramid = 2 [packed = true];
+	required float match_threshold = 1; // match similarity threshold
+	repeated int32 steps_each_pyramid = 2 [packed = true]; // on each image pyramid the sliding windows stride 
 }
 
 // input data source configuration
 message DataSource
 {
-    enum DataType
+    enum DataType //data type : image seqences, video, web camera
 	{
 		IMAGES = 0;
 		OFFLINE_VIDEO = 1;
