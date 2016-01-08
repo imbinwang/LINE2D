@@ -7,10 +7,10 @@ This code repository aims at real-time texture-less object instance detection an
 ### Requirements ###
 
 1. OS Platform: Windows
-2. [OpenCV](http://opencv.org/): The version should be below 3.0, because the 2.X APIs are different from 3.X somehow. You can download this comipled [OpenCV2.4.6]() here just for VC10_X86.
+2. [OpenCV](http://opencv.org/): The version should be below 3.0, because the 2.X APIs are different from 3.X somehow. You can download this comipled [OpenCV2.4.6](http://pan.baidu.com/s/1mgWFNHu) here just for VC10_X86.
 3. [freeglut](http://freeglut.sourceforge.net/): Freegult for MSVC can be downloaded from [freeglut 3.0.0 MSVC Package](http://files.transmissionzero.co.uk/software/development/GLUT/freeglut-MSVC.zip)
-4. glog: You can download source code from its github page [here](https://github.com/google/glog), then compiled it. Or you can download this comipiled [glog]() here just for  VC10_X86.
-5. [protobuf](https://developers.google.com/protocol-buffers/): You can download source code from its github page [here](https://github.com/google/protobuf), then compiled it. Or you can download this comipiled [protobuf]() here just for  VC10_X86.
+4. glog: You can download source code from its github page [here](https://github.com/google/glog), then compiled it. Or you can download this comipiled [glog](http://pan.baidu.com/s/1o6TTRL4) here just for  VC10_X86.
+5. [protobuf](https://developers.google.com/protocol-buffers/): You can download source code from its github page [here](https://github.com/google/protobuf), then compiled it. Or you can download this comipiled [protobuf](http://pan.baidu.com/s/1o73fIHG) here just for  VC10_X86.
 6. Before you can run the code project, you should configure the correct pathes of includes, libs and dlls for aforementioned third dependencies.
 
 ### Installation and Demo ###
@@ -38,4 +38,6 @@ This code repository aims at real-time texture-less object instance detection an
 
 ### Beyond the demo ###
 
-Before you try you own data, you should scan the file `LINE2D_ROOT/protobuf/Config.prototxt`
+Before you try you own data, you should scan the file `LINE2D_ROOT/protobuf/Config.prototxt` and understand the meaning of each paramter. Then you can write a configura file for you own data like `LINE2D_ROOT/data/HBLTS8/config.prototxt`.
+
+
