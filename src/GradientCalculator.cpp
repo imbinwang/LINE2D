@@ -4,7 +4,7 @@
 
 #include "..\include\GradientCalculator.h"
 
-#define _TIMER_
+//#define _TIMER_
 #ifdef _TIMER_
 #include "..\include\util\CvUtility.h"
 static Timer t;

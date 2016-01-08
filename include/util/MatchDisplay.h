@@ -10,7 +10,7 @@
 
 namespace rl2d
 {
-	const ObjectConfig& objectConfigById(const ObjectsConfig &objectsConfig, const int classId);
+	const ObjectsConfig_ObjectConfig& objectConfigById(const ObjectsConfig &objectsConfig, const int classId);
 
 	// draw the best draw_match_num matches
 	bool DrawMatches(const std::vector<Match> &matches,  

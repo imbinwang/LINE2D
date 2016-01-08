@@ -1,4 +1,5 @@
 #include "..\..\include\util\GLRender.h"
+#include <fstream>
 
 /* projection(intrinsic) related */
 CameraCalibration GLRender::m_calibration; // calibrated camera intrinsic parameters
@@ -26,11 +27,14 @@ uchar* GLRender::m_pixelBuffer; // buffered rendered pixels
 float* GLRender::m_depthBuffer; // buffered rendered depth data
 
 /* storage for each frame and camera pose during camera viewpoint sampling */
-std::vector<cv::Mat> GLRender::m_viewImgs;
-std::vector<cv::Matx61f> GLRender::m_viewPoses;
+//std::vector<cv::Mat> GLRender::m_viewImgs;
+//std::vector<cv::Matx61f> GLRender::m_viewPoses;
+std::string GLRender::m_outDir;
 
 static unsigned int viewCounter;
 static bool startStoreViewImageAndPose;
+static std::string objName;
+static std::ofstream poseOutFile;
 
 void GLRender::init(int argc, char **argv,
 	GLMmodel *model,
@@ -39,7 +43,8 @@ void GLRender::init(int argc, char **argv,
 	float minRadius, float maxRadius, float radiusStep,
 	float minLatitude, float maxLatitude, float latitudeStep,
 	float minLongitude, float maxLongitude, float longitudeStep,
-	float minInplane, float maxInplane, float inplaneStep)
+	float minInplane, float maxInplane, float inplaneStep,
+	const std::string &out_dir)
 {
 	m_calibration = calibration;
 	m_screenWidth = int(2*m_calibration.cx()+0.5f);
@@ -59,8 +64,17 @@ void GLRender::init(int argc, char **argv,
 		(static_cast<unsigned int>((m_maxLatitude - m_minLatitude)/ m_latitudeStep) + 1)*
 		(static_cast<unsigned int>((m_maxLongitude - m_minLongitude)/ m_longitudeStep) + 1)*
 		(static_cast<unsigned int>((m_maxInplane - m_minInplane)/ m_inplaneStep) + 1);
-	m_viewImgs.resize(viewPointsNum);
-	m_viewPoses.resize(viewPointsNum);
+	/*m_viewImgs.resize(viewPointsNum);
+	m_viewPoses.resize(viewPointsNum);*/
+	m_outDir = out_dir;
+
+	std::string pathname = std::string(m_model->pathname);
+	size_t dot_idx = pathname.find_last_of('.');
+	size_t slash_idx = pathname.find_last_of("/\\");
+	objName = pathname.substr(slash_idx+1, dot_idx);
+	std::string out_pose_file_path = m_outDir + "/" + objName + "PoseInRodrigus.txt";
+	poseOutFile.open(out_pose_file_path.c_str());
+
 	viewCounter = 0;
 	startStoreViewImageAndPose = 0;
 
@@ -217,8 +231,15 @@ void GLRender::display()
 			objectPose(5) = objectCoorOrigin(2);
 
 			// save the view image and corresponding pose
-			m_viewImgs[viewCounter-1] = viewImage;
-			m_viewPoses[viewCounter-1] = objectPose;
+			/*m_viewImgs[viewCounter-1] = viewImage;
+			m_viewPoses[viewCounter-1] = objectPose;*/
+			char buf_[10];
+			sprintf(buf_, "%d", viewCounter-1);
+			std::string vc_ = buf_;
+			std::string out_img_file_path = m_outDir + "/" + objName + vc_ + ".png";
+			cv::imwrite(out_img_file_path, viewImage);
+			poseOutFile << objectPose.val[0] << objectPose.val[1] << objectPose.val[2]
+			<< objectPose.val[3] << objectPose.val[4] << objectPose.val[5] << "\n";
 
 			startStoreViewImageAndPose = 0;
 		}
@@ -401,6 +422,7 @@ void GLRender::moveCamera(int value)
 
 	// done the camera viewpoints sampling and exit the main loop
 	// close the opengl context
+	poseOutFile.close();
 	glutLeaveMainLoop();
 }
 

@@ -1,8 +1,9 @@
 #include "..\include\Detector.h"
 #include "..\include\Match.h"
+#include "..\include\util\Config.pb.h"
 #include <opencv2\opencv.hpp>
 
-#define _TIMER_
+//#define _TIMER_
 #ifdef _TIMER_
 #include "..\include\util\CvUtility.h"
 static Timer t;
@@ -506,9 +507,18 @@ namespace rl2d
 	/***detector factory******detector factory******detector factory******detector factory***/
 	/***detector factory******detector factory******detector factory******detector factory***/
 	/***detector factory******detector factory******detector factory******detector factory***/
-	static const int T_DEFAULTS[] = {5,8};
-	cv::Ptr<Detector> getDefaultLINE2D()
+	//static const int T_DEFAULTS[] = {5,8};
+	//static const int T_DEFAULTS[] = {8};
+	cv::Ptr<Detector> getDefaultLINE2D(const DetectorConfig &detector_config)
 	{
-		return new Detector(std::vector<int>(T_DEFAULTS, T_DEFAULTS + 2));
+		//return new Detector(std::vector<int>(T_DEFAULTS, T_DEFAULTS + 2));
+		//return new Detector(std::vector<int>(T_DEFAULTS, T_DEFAULTS + 1));
+
+		int pyramids_num = detector_config.steps_each_pyramid_size();
+		std::vector<int> steps_each_pyramid(pyramids_num);
+		for(int i=0; i<pyramids_num; ++i)
+			steps_each_pyramid[i] = detector_config.steps_each_pyramid(i);
+
+		return new Detector(steps_each_pyramid);
 	}
 }

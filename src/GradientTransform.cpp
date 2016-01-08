@@ -3,7 +3,7 @@
 #include <opencv2\opencv.hpp>
 #include <opencv2\core\internal.hpp>
 
-#define _TIMER_
+//#define _TIMER_
 #ifdef _TIMER_
 #include "..\include\util\CvUtility.h"
 static Timer t;

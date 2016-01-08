@@ -144,7 +144,7 @@ namespace rl2d
 		}
 
 		// draw the coordinates system
-		int axisLength = static_cast<int>(2.5*glmMaxRadius(objModel));
+		int axisLength = static_cast<int>(1.5*glmMaxRadius(objModel));
 		DrawCoordinateSystem(camCalib, rVec, tVec, axisLength, dst);
 	}
 

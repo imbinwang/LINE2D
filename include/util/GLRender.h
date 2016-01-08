@@ -32,7 +32,8 @@ public:
 		float minRadius, float maxRadius, float radiusStep,
 		float minLatitude, float maxLatitude, float latitudeStep,
 		float minLongitude, float maxLongitude, float longitudeStep,
-		float minInplane, float maxInplane, float inplaneStep);
+		float minInplane, float maxInplane, float inplaneStep,
+		const std::string &out_dir);
 	static void display();
 	static void reshape(int width, int height);
 	static void moveCamera(int value);
@@ -66,8 +67,9 @@ public:
 	static float* m_depthBuffer; // buffered rendered depth data
 
 	/* storage for each frame and camera pose during camera viewpoint sampling */
-	static std::vector<cv::Mat> m_viewImgs;
-	static std::vector<cv::Matx61f> m_viewPoses;
+	/*static std::vector<cv::Mat> m_viewImgs;
+	static std::vector<cv::Matx61f> m_viewPoses;*/
+	static std::string m_outDir;
 };
 
 #endif // _Render_H_

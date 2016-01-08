@@ -96,7 +96,7 @@ namespace rl2d
 
 		if(hist1Mod>0 && hist2Mod>0)
 			histSimilarity = histSimilarity/(sqrt(hist1Mod)*sqrt(hist2Mod));
-		printf("---%f %f %f---\n", hist1Mod, hist2Mod, histSimilarity);
+		printf("---%f---\n", histSimilarity);
 		return histSimilarity;
 	}
 
@@ -149,7 +149,7 @@ namespace rl2d
 		const int objectNum = objectsConfig.object_config_size();
 		for(int i=0; i<objectNum; ++i)
 		{
-			const ObjectConfig &objectConfig = objectsConfig.object_config(i);
+			const ObjectsConfig_ObjectConfig &objectConfig = objectsConfig.object_config(i);
 			const int classId = objectConfig.id();
 
 			const int colorHistNum = objectConfig.color_hist_dir_size();
@@ -162,8 +162,7 @@ namespace rl2d
 				offlineCalcHSHist(colorHistImgsDir, HBIN, SBIN, hsHist);
 				hsHists[j] = hsHist;
 
-				std::cout<<hsHist<<std::endl;
-				cv::waitKey();
+				//std::cout<<hsHist<<std::endl;
 			}
 
 			hsHistograms.insert(std::pair<int, std::vector<cv::Mat> >(classId, hsHists));
@@ -181,7 +180,8 @@ namespace rl2d
 		std::vector<Match> refinedMatches;
 		std::vector<cv::Rect> refinedCorrespondingRects;
 
-		int candidates_num = (int)candidatesMatches.size();
+		int candidates_num_ = (int)candidatesMatches.size();
+		int candidates_num = candidates_num_>100 ? 100:candidates_num_;
 
 		for(int i=0; i<candidates_num; ++i)
 		{
@@ -223,7 +223,7 @@ namespace rl2d
 				refinedMatches.push_back( m );
 				refinedCorrespondingRects.push_back( correspondingRects[i] );
 			}
-			cv::waitKey();
+			//cv::waitKey();
 		}
 
 		std::vector<Match>().swap(candidatesMatches);

@@ -4,12 +4,12 @@
 
 namespace rl2d
 {
-	const ObjectConfig& objectConfigById(const ObjectsConfig &objectsConfig, const int classId)
+	const ObjectsConfig_ObjectConfig& objectConfigById(const ObjectsConfig &objectsConfig, const int classId)
 	{
 		const int classNum = objectsConfig.object_config_size();
 		for(int i=0; i<classNum; ++i)
 		{
-			const ObjectConfig &objectConfig = objectsConfig.object_config(i);
+			const ObjectsConfig_ObjectConfig &objectConfig = objectsConfig.object_config(i);
 			if(objectConfig.id()==classId)
 				return objectConfig;
 		}
@@ -64,8 +64,8 @@ namespace rl2d
 			int template_id = m.template_id;
 
 			// get the predefined color from configuration file
-			const const ObjectConfig& objectConfig = objectConfigById(objectsConfig, class_id);
-			const ObjectConfig_RGB &bb_color = objectConfig.bounding_box_color();
+			const const ObjectsConfig_ObjectConfig& objectConfig = objectConfigById(objectsConfig, class_id);
+			const ObjectsConfig_ObjectConfig_RGB &bb_color = objectConfig.bounding_box_color();
 
 			std::vector<Template> templatePyramid = detector->getTemplates(class_id, template_id);
 
@@ -339,8 +339,8 @@ namespace rl2d
 		{
 			const Match &m = matches[i];
 			// draw the match with bold bounding box
-			const const ObjectConfig& objectConfig = objectConfigById(objectsConfig, m.class_id);
-			const ObjectConfig_RGB &bb_color = objectConfig.bounding_box_color();
+			const const ObjectsConfig_ObjectConfig& objectConfig = objectConfigById(objectsConfig, m.class_id);
+			const ObjectsConfig_ObjectConfig_RGB &bb_color = objectConfig.bounding_box_color();
 			cv::rectangle(displayImg, boundingBoxes[i], CV_RGB(0,0,0), 3);
 			cv::rectangle(displayImg, boundingBoxes[i], CV_RGB(bb_color.r(),bb_color.g(),bb_color.b()), 2);
 		}

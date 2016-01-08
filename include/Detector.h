@@ -15,7 +15,7 @@ Detector using gradient related features
 #include "..\include\GradientTransform.h"
 #include "..\include\Template.h"
 #include "..\include\Match.h"
-
+#include ".\util\Config.pb.h"
 
 namespace rl2d
 {
@@ -75,7 +75,7 @@ namespace rl2d
 
 	// detector factory 
 	// factory function for detector using LINE algorithm with color gradients
-	cv::Ptr<Detector> getDefaultLINE2D();
+	cv::Ptr<Detector> getDefaultLINE2D(const DetectorConfig &detector_config);
 }
 
 #endif // _rl2d_Detector_H_

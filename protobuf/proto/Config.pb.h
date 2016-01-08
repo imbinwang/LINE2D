@@ -23,6 +23,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -33,24 +34,47 @@ void  protobuf_AddDesc_Config_2eproto();
 void protobuf_AssignDesc_Config_2eproto();
 void protobuf_ShutdownFile_Config_2eproto();
 
-class ObjectConfig;
-class ObjectConfig_ImageDirAndPoseFilePair;
-class ObjectConfig_OnlineRenderingParams;
-class ObjectConfig_RGB;
 class ObjectsConfig;
+class ObjectsConfig_ObjectConfig;
+class ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair;
+class ObjectsConfig_ObjectConfig_OnlineRenderingParams;
+class ObjectsConfig_ObjectConfig_RGB;
 class CameraIntrinsic;
 class DetectorConfig;
+class DataSource;
+class HSColorHistogram;
+class RuntimeConfig;
 
+enum DataSource_DataType {
+  DataSource_DataType_IMAGES = 0,
+  DataSource_DataType_OFFLINE_VIDEO = 1,
+  DataSource_DataType_ONLINE_VIDEO = 2
+};
+bool DataSource_DataType_IsValid(int value);
+const DataSource_DataType DataSource_DataType_DataType_MIN = DataSource_DataType_IMAGES;
+const DataSource_DataType DataSource_DataType_DataType_MAX = DataSource_DataType_ONLINE_VIDEO;
+const int DataSource_DataType_DataType_ARRAYSIZE = DataSource_DataType_DataType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* DataSource_DataType_descriptor();
+inline const ::std::string& DataSource_DataType_Name(DataSource_DataType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    DataSource_DataType_descriptor(), value);
+}
+inline bool DataSource_DataType_Parse(
+    const ::std::string& name, DataSource_DataType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DataSource_DataType>(
+    DataSource_DataType_descriptor(), name, value);
+}
 // ===================================================================
 
-class ObjectConfig_ImageDirAndPoseFilePair : public ::google::protobuf::Message {
+class ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair : public ::google::protobuf::Message {
  public:
-  ObjectConfig_ImageDirAndPoseFilePair();
-  virtual ~ObjectConfig_ImageDirAndPoseFilePair();
+  ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair();
+  virtual ~ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair();
 
-  ObjectConfig_ImageDirAndPoseFilePair(const ObjectConfig_ImageDirAndPoseFilePair& from);
+  ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair(const ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& from);
 
-  inline ObjectConfig_ImageDirAndPoseFilePair& operator=(const ObjectConfig_ImageDirAndPoseFilePair& from) {
+  inline ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& operator=(const ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& from) {
     CopyFrom(from);
     return *this;
   }
@@ -64,17 +88,17 @@ class ObjectConfig_ImageDirAndPoseFilePair : public ::google::protobuf::Message 
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ObjectConfig_ImageDirAndPoseFilePair& default_instance();
+  static const ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& default_instance();
 
-  void Swap(ObjectConfig_ImageDirAndPoseFilePair* other);
+  void Swap(ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* other);
 
   // implements Message ----------------------------------------------
 
-  ObjectConfig_ImageDirAndPoseFilePair* New() const;
+  ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ObjectConfig_ImageDirAndPoseFilePair& from);
-  void MergeFrom(const ObjectConfig_ImageDirAndPoseFilePair& from);
+  void CopyFrom(const ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& from);
+  void MergeFrom(const ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -121,7 +145,7 @@ class ObjectConfig_ImageDirAndPoseFilePair : public ::google::protobuf::Message 
   inline ::std::string* release_pose_path();
   inline void set_allocated_pose_path(::std::string* pose_path);
 
-  // @@protoc_insertion_point(class_scope:rl2d.ObjectConfig.ImageDirAndPoseFilePair)
+  // @@protoc_insertion_point(class_scope:rl2d.ObjectsConfig.ObjectConfig.ImageDirAndPoseFilePair)
  private:
   inline void set_has_img_dir();
   inline void clear_has_img_dir();
@@ -141,18 +165,18 @@ class ObjectConfig_ImageDirAndPoseFilePair : public ::google::protobuf::Message 
   friend void protobuf_ShutdownFile_Config_2eproto();
 
   void InitAsDefaultInstance();
-  static ObjectConfig_ImageDirAndPoseFilePair* default_instance_;
+  static ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class ObjectConfig_OnlineRenderingParams : public ::google::protobuf::Message {
+class ObjectsConfig_ObjectConfig_OnlineRenderingParams : public ::google::protobuf::Message {
  public:
-  ObjectConfig_OnlineRenderingParams();
-  virtual ~ObjectConfig_OnlineRenderingParams();
+  ObjectsConfig_ObjectConfig_OnlineRenderingParams();
+  virtual ~ObjectsConfig_ObjectConfig_OnlineRenderingParams();
 
-  ObjectConfig_OnlineRenderingParams(const ObjectConfig_OnlineRenderingParams& from);
+  ObjectsConfig_ObjectConfig_OnlineRenderingParams(const ObjectsConfig_ObjectConfig_OnlineRenderingParams& from);
 
-  inline ObjectConfig_OnlineRenderingParams& operator=(const ObjectConfig_OnlineRenderingParams& from) {
+  inline ObjectsConfig_ObjectConfig_OnlineRenderingParams& operator=(const ObjectsConfig_ObjectConfig_OnlineRenderingParams& from) {
     CopyFrom(from);
     return *this;
   }
@@ -166,17 +190,17 @@ class ObjectConfig_OnlineRenderingParams : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ObjectConfig_OnlineRenderingParams& default_instance();
+  static const ObjectsConfig_ObjectConfig_OnlineRenderingParams& default_instance();
 
-  void Swap(ObjectConfig_OnlineRenderingParams* other);
+  void Swap(ObjectsConfig_ObjectConfig_OnlineRenderingParams* other);
 
   // implements Message ----------------------------------------------
 
-  ObjectConfig_OnlineRenderingParams* New() const;
+  ObjectsConfig_ObjectConfig_OnlineRenderingParams* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ObjectConfig_OnlineRenderingParams& from);
-  void MergeFrom(const ObjectConfig_OnlineRenderingParams& from);
+  void CopyFrom(const ObjectsConfig_ObjectConfig_OnlineRenderingParams& from);
+  void MergeFrom(const ObjectsConfig_ObjectConfig_OnlineRenderingParams& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -283,7 +307,19 @@ class ObjectConfig_OnlineRenderingParams : public ::google::protobuf::Message {
   inline float inplane_step() const;
   inline void set_inplane_step(float value);
 
-  // @@protoc_insertion_point(class_scope:rl2d.ObjectConfig.OnlineRenderingParams)
+  // required string out_dir = 13;
+  inline bool has_out_dir() const;
+  inline void clear_out_dir();
+  static const int kOutDirFieldNumber = 13;
+  inline const ::std::string& out_dir() const;
+  inline void set_out_dir(const ::std::string& value);
+  inline void set_out_dir(const char* value);
+  inline void set_out_dir(const char* value, size_t size);
+  inline ::std::string* mutable_out_dir();
+  inline ::std::string* release_out_dir();
+  inline void set_allocated_out_dir(::std::string* out_dir);
+
+  // @@protoc_insertion_point(class_scope:rl2d.ObjectsConfig.ObjectConfig.OnlineRenderingParams)
  private:
   inline void set_has_min_radius();
   inline void clear_has_min_radius();
@@ -309,6 +345,8 @@ class ObjectConfig_OnlineRenderingParams : public ::google::protobuf::Message {
   inline void clear_has_max_inplane();
   inline void set_has_inplane_step();
   inline void clear_has_inplane_step();
+  inline void set_has_out_dir();
+  inline void clear_has_out_dir();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -324,27 +362,28 @@ class ObjectConfig_OnlineRenderingParams : public ::google::protobuf::Message {
   float min_inplane_;
   float max_inplane_;
   float inplane_step_;
+  ::std::string* out_dir_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(13 + 31) / 32];
 
   friend void  protobuf_AddDesc_Config_2eproto();
   friend void protobuf_AssignDesc_Config_2eproto();
   friend void protobuf_ShutdownFile_Config_2eproto();
 
   void InitAsDefaultInstance();
-  static ObjectConfig_OnlineRenderingParams* default_instance_;
+  static ObjectsConfig_ObjectConfig_OnlineRenderingParams* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class ObjectConfig_RGB : public ::google::protobuf::Message {
+class ObjectsConfig_ObjectConfig_RGB : public ::google::protobuf::Message {
  public:
-  ObjectConfig_RGB();
-  virtual ~ObjectConfig_RGB();
+  ObjectsConfig_ObjectConfig_RGB();
+  virtual ~ObjectsConfig_ObjectConfig_RGB();
 
-  ObjectConfig_RGB(const ObjectConfig_RGB& from);
+  ObjectsConfig_ObjectConfig_RGB(const ObjectsConfig_ObjectConfig_RGB& from);
 
-  inline ObjectConfig_RGB& operator=(const ObjectConfig_RGB& from) {
+  inline ObjectsConfig_ObjectConfig_RGB& operator=(const ObjectsConfig_ObjectConfig_RGB& from) {
     CopyFrom(from);
     return *this;
   }
@@ -358,17 +397,17 @@ class ObjectConfig_RGB : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ObjectConfig_RGB& default_instance();
+  static const ObjectsConfig_ObjectConfig_RGB& default_instance();
 
-  void Swap(ObjectConfig_RGB* other);
+  void Swap(ObjectsConfig_ObjectConfig_RGB* other);
 
   // implements Message ----------------------------------------------
 
-  ObjectConfig_RGB* New() const;
+  ObjectsConfig_ObjectConfig_RGB* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ObjectConfig_RGB& from);
-  void MergeFrom(const ObjectConfig_RGB& from);
+  void CopyFrom(const ObjectsConfig_ObjectConfig_RGB& from);
+  void MergeFrom(const ObjectsConfig_ObjectConfig_RGB& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -412,7 +451,7 @@ class ObjectConfig_RGB : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 b() const;
   inline void set_b(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:rl2d.ObjectConfig.RGB)
+  // @@protoc_insertion_point(class_scope:rl2d.ObjectsConfig.ObjectConfig.RGB)
  private:
   inline void set_has_r();
   inline void clear_has_r();
@@ -435,18 +474,18 @@ class ObjectConfig_RGB : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_Config_2eproto();
 
   void InitAsDefaultInstance();
-  static ObjectConfig_RGB* default_instance_;
+  static ObjectsConfig_ObjectConfig_RGB* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class ObjectConfig : public ::google::protobuf::Message {
+class ObjectsConfig_ObjectConfig : public ::google::protobuf::Message {
  public:
-  ObjectConfig();
-  virtual ~ObjectConfig();
+  ObjectsConfig_ObjectConfig();
+  virtual ~ObjectsConfig_ObjectConfig();
 
-  ObjectConfig(const ObjectConfig& from);
+  ObjectsConfig_ObjectConfig(const ObjectsConfig_ObjectConfig& from);
 
-  inline ObjectConfig& operator=(const ObjectConfig& from) {
+  inline ObjectsConfig_ObjectConfig& operator=(const ObjectsConfig_ObjectConfig& from) {
     CopyFrom(from);
     return *this;
   }
@@ -460,17 +499,17 @@ class ObjectConfig : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ObjectConfig& default_instance();
+  static const ObjectsConfig_ObjectConfig& default_instance();
 
-  void Swap(ObjectConfig* other);
+  void Swap(ObjectsConfig_ObjectConfig* other);
 
   // implements Message ----------------------------------------------
 
-  ObjectConfig* New() const;
+  ObjectsConfig_ObjectConfig* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ObjectConfig& from);
-  void MergeFrom(const ObjectConfig& from);
+  void CopyFrom(const ObjectsConfig_ObjectConfig& from);
+  void MergeFrom(const ObjectsConfig_ObjectConfig& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -491,9 +530,9 @@ class ObjectConfig : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef ObjectConfig_ImageDirAndPoseFilePair ImageDirAndPoseFilePair;
-  typedef ObjectConfig_OnlineRenderingParams OnlineRenderingParams;
-  typedef ObjectConfig_RGB RGB;
+  typedef ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair ImageDirAndPoseFilePair;
+  typedef ObjectsConfig_ObjectConfig_OnlineRenderingParams OnlineRenderingParams;
+  typedef ObjectsConfig_ObjectConfig_RGB RGB;
 
   // accessors -------------------------------------------------------
 
@@ -528,16 +567,16 @@ class ObjectConfig : public ::google::protobuf::Message {
   inline ::std::string* release_model_path();
   inline void set_allocated_model_path(::std::string* model_path);
 
-  // repeated .rl2d.ObjectConfig.ImageDirAndPoseFilePair imageDir_poseFile_pair = 3;
+  // repeated .rl2d.ObjectsConfig.ObjectConfig.ImageDirAndPoseFilePair imageDir_poseFile_pair = 3;
   inline int imagedir_posefile_pair_size() const;
   inline void clear_imagedir_posefile_pair();
   static const int kImageDirPoseFilePairFieldNumber = 3;
-  inline const ::rl2d::ObjectConfig_ImageDirAndPoseFilePair& imagedir_posefile_pair(int index) const;
-  inline ::rl2d::ObjectConfig_ImageDirAndPoseFilePair* mutable_imagedir_posefile_pair(int index);
-  inline ::rl2d::ObjectConfig_ImageDirAndPoseFilePair* add_imagedir_posefile_pair();
-  inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig_ImageDirAndPoseFilePair >&
+  inline const ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& imagedir_posefile_pair(int index) const;
+  inline ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* mutable_imagedir_posefile_pair(int index);
+  inline ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* add_imagedir_posefile_pair();
+  inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair >&
       imagedir_posefile_pair() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig_ImageDirAndPoseFilePair >*
+  inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair >*
       mutable_imagedir_posefile_pair();
 
   // repeated string color_hist_dir = 4;
@@ -556,25 +595,25 @@ class ObjectConfig : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& color_hist_dir() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_color_hist_dir();
 
-  // optional .rl2d.ObjectConfig.OnlineRenderingParams online_rendering_params = 6;
+  // optional .rl2d.ObjectsConfig.ObjectConfig.OnlineRenderingParams online_rendering_params = 6;
   inline bool has_online_rendering_params() const;
   inline void clear_online_rendering_params();
   static const int kOnlineRenderingParamsFieldNumber = 6;
-  inline const ::rl2d::ObjectConfig_OnlineRenderingParams& online_rendering_params() const;
-  inline ::rl2d::ObjectConfig_OnlineRenderingParams* mutable_online_rendering_params();
-  inline ::rl2d::ObjectConfig_OnlineRenderingParams* release_online_rendering_params();
-  inline void set_allocated_online_rendering_params(::rl2d::ObjectConfig_OnlineRenderingParams* online_rendering_params);
+  inline const ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams& online_rendering_params() const;
+  inline ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* mutable_online_rendering_params();
+  inline ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* release_online_rendering_params();
+  inline void set_allocated_online_rendering_params(::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* online_rendering_params);
 
-  // optional .rl2d.ObjectConfig.RGB bounding_box_color = 7;
+  // optional .rl2d.ObjectsConfig.ObjectConfig.RGB bounding_box_color = 7;
   inline bool has_bounding_box_color() const;
   inline void clear_bounding_box_color();
   static const int kBoundingBoxColorFieldNumber = 7;
-  inline const ::rl2d::ObjectConfig_RGB& bounding_box_color() const;
-  inline ::rl2d::ObjectConfig_RGB* mutable_bounding_box_color();
-  inline ::rl2d::ObjectConfig_RGB* release_bounding_box_color();
-  inline void set_allocated_bounding_box_color(::rl2d::ObjectConfig_RGB* bounding_box_color);
+  inline const ::rl2d::ObjectsConfig_ObjectConfig_RGB& bounding_box_color() const;
+  inline ::rl2d::ObjectsConfig_ObjectConfig_RGB* mutable_bounding_box_color();
+  inline ::rl2d::ObjectsConfig_ObjectConfig_RGB* release_bounding_box_color();
+  inline void set_allocated_bounding_box_color(::rl2d::ObjectsConfig_ObjectConfig_RGB* bounding_box_color);
 
-  // @@protoc_insertion_point(class_scope:rl2d.ObjectConfig)
+  // @@protoc_insertion_point(class_scope:rl2d.ObjectsConfig.ObjectConfig)
  private:
   inline void set_has_id();
   inline void clear_has_id();
@@ -591,10 +630,10 @@ class ObjectConfig : public ::google::protobuf::Message {
 
   ::std::string* name_;
   ::std::string* model_path_;
-  ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig_ImageDirAndPoseFilePair > imagedir_posefile_pair_;
+  ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair > imagedir_posefile_pair_;
   ::google::protobuf::RepeatedPtrField< ::std::string> color_hist_dir_;
-  ::rl2d::ObjectConfig_OnlineRenderingParams* online_rendering_params_;
-  ::rl2d::ObjectConfig_RGB* bounding_box_color_;
+  ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* online_rendering_params_;
+  ::rl2d::ObjectsConfig_ObjectConfig_RGB* bounding_box_color_;
   ::google::protobuf::int32 id_;
 
   mutable int _cached_size_;
@@ -605,7 +644,7 @@ class ObjectConfig : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_Config_2eproto();
 
   void InitAsDefaultInstance();
-  static ObjectConfig* default_instance_;
+  static ObjectsConfig_ObjectConfig* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -661,18 +700,20 @@ class ObjectsConfig : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
+  typedef ObjectsConfig_ObjectConfig ObjectConfig;
+
   // accessors -------------------------------------------------------
 
-  // repeated .rl2d.ObjectConfig object_config = 1;
+  // repeated .rl2d.ObjectsConfig.ObjectConfig object_config = 1;
   inline int object_config_size() const;
   inline void clear_object_config();
   static const int kObjectConfigFieldNumber = 1;
-  inline const ::rl2d::ObjectConfig& object_config(int index) const;
-  inline ::rl2d::ObjectConfig* mutable_object_config(int index);
-  inline ::rl2d::ObjectConfig* add_object_config();
-  inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig >&
+  inline const ::rl2d::ObjectsConfig_ObjectConfig& object_config(int index) const;
+  inline ::rl2d::ObjectsConfig_ObjectConfig* mutable_object_config(int index);
+  inline ::rl2d::ObjectsConfig_ObjectConfig* add_object_config();
+  inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig >&
       object_config() const;
-  inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig >*
+  inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig >*
       mutable_object_config();
 
   // @@protoc_insertion_point(class_scope:rl2d.ObjectsConfig)
@@ -680,7 +721,7 @@ class ObjectsConfig : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig > object_config_;
+  ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig > object_config_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -881,16 +922,16 @@ class DetectorConfig : public ::google::protobuf::Message {
   inline float match_threshold() const;
   inline void set_match_threshold(float value);
 
-  // repeated float steps_each_pyramid = 2 [packed = true];
+  // repeated int32 steps_each_pyramid = 2 [packed = true];
   inline int steps_each_pyramid_size() const;
   inline void clear_steps_each_pyramid();
   static const int kStepsEachPyramidFieldNumber = 2;
-  inline float steps_each_pyramid(int index) const;
-  inline void set_steps_each_pyramid(int index, float value);
-  inline void add_steps_each_pyramid(float value);
-  inline const ::google::protobuf::RepeatedField< float >&
+  inline ::google::protobuf::int32 steps_each_pyramid(int index) const;
+  inline void set_steps_each_pyramid(int index, ::google::protobuf::int32 value);
+  inline void add_steps_each_pyramid(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
       steps_each_pyramid() const;
-  inline ::google::protobuf::RepeatedField< float >*
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_steps_each_pyramid();
 
   // @@protoc_insertion_point(class_scope:rl2d.DetectorConfig)
@@ -900,7 +941,7 @@ class DetectorConfig : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedField< float > steps_each_pyramid_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > steps_each_pyramid_;
   mutable int _steps_each_pyramid_cached_byte_size_;
   float match_threshold_;
 
@@ -914,61 +955,442 @@ class DetectorConfig : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static DetectorConfig* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class DataSource : public ::google::protobuf::Message {
+ public:
+  DataSource();
+  virtual ~DataSource();
+
+  DataSource(const DataSource& from);
+
+  inline DataSource& operator=(const DataSource& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DataSource& default_instance();
+
+  void Swap(DataSource* other);
+
+  // implements Message ----------------------------------------------
+
+  DataSource* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DataSource& from);
+  void MergeFrom(const DataSource& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef DataSource_DataType DataType;
+  static const DataType IMAGES = DataSource_DataType_IMAGES;
+  static const DataType OFFLINE_VIDEO = DataSource_DataType_OFFLINE_VIDEO;
+  static const DataType ONLINE_VIDEO = DataSource_DataType_ONLINE_VIDEO;
+  static inline bool DataType_IsValid(int value) {
+    return DataSource_DataType_IsValid(value);
+  }
+  static const DataType DataType_MIN =
+    DataSource_DataType_DataType_MIN;
+  static const DataType DataType_MAX =
+    DataSource_DataType_DataType_MAX;
+  static const int DataType_ARRAYSIZE =
+    DataSource_DataType_DataType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  DataType_descriptor() {
+    return DataSource_DataType_descriptor();
+  }
+  static inline const ::std::string& DataType_Name(DataType value) {
+    return DataSource_DataType_Name(value);
+  }
+  static inline bool DataType_Parse(const ::std::string& name,
+      DataType* value) {
+    return DataSource_DataType_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // required .rl2d.DataSource.DataType type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::rl2d::DataSource_DataType type() const;
+  inline void set_type(::rl2d::DataSource_DataType value);
+
+  // optional string imgs_dir = 2;
+  inline bool has_imgs_dir() const;
+  inline void clear_imgs_dir();
+  static const int kImgsDirFieldNumber = 2;
+  inline const ::std::string& imgs_dir() const;
+  inline void set_imgs_dir(const ::std::string& value);
+  inline void set_imgs_dir(const char* value);
+  inline void set_imgs_dir(const char* value, size_t size);
+  inline ::std::string* mutable_imgs_dir();
+  inline ::std::string* release_imgs_dir();
+  inline void set_allocated_imgs_dir(::std::string* imgs_dir);
+
+  // optional string offline_video_path = 3;
+  inline bool has_offline_video_path() const;
+  inline void clear_offline_video_path();
+  static const int kOfflineVideoPathFieldNumber = 3;
+  inline const ::std::string& offline_video_path() const;
+  inline void set_offline_video_path(const ::std::string& value);
+  inline void set_offline_video_path(const char* value);
+  inline void set_offline_video_path(const char* value, size_t size);
+  inline ::std::string* mutable_offline_video_path();
+  inline ::std::string* release_offline_video_path();
+  inline void set_allocated_offline_video_path(::std::string* offline_video_path);
+
+  // @@protoc_insertion_point(class_scope:rl2d.DataSource)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_imgs_dir();
+  inline void clear_has_imgs_dir();
+  inline void set_has_offline_video_path();
+  inline void clear_has_offline_video_path();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* imgs_dir_;
+  ::std::string* offline_video_path_;
+  int type_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Config_2eproto();
+  friend void protobuf_AssignDesc_Config_2eproto();
+  friend void protobuf_ShutdownFile_Config_2eproto();
+
+  void InitAsDefaultInstance();
+  static DataSource* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HSColorHistogram : public ::google::protobuf::Message {
+ public:
+  HSColorHistogram();
+  virtual ~HSColorHistogram();
+
+  HSColorHistogram(const HSColorHistogram& from);
+
+  inline HSColorHistogram& operator=(const HSColorHistogram& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HSColorHistogram& default_instance();
+
+  void Swap(HSColorHistogram* other);
+
+  // implements Message ----------------------------------------------
+
+  HSColorHistogram* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HSColorHistogram& from);
+  void MergeFrom(const HSColorHistogram& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required bool hs_color_refinement = 1;
+  inline bool has_hs_color_refinement() const;
+  inline void clear_hs_color_refinement();
+  static const int kHsColorRefinementFieldNumber = 1;
+  inline bool hs_color_refinement() const;
+  inline void set_hs_color_refinement(bool value);
+
+  // optional float threshold = 2 [default = 0.6];
+  inline bool has_threshold() const;
+  inline void clear_threshold();
+  static const int kThresholdFieldNumber = 2;
+  inline float threshold() const;
+  inline void set_threshold(float value);
+
+  // optional int32 h_bin = 3 [default = 30];
+  inline bool has_h_bin() const;
+  inline void clear_h_bin();
+  static const int kHBinFieldNumber = 3;
+  inline ::google::protobuf::int32 h_bin() const;
+  inline void set_h_bin(::google::protobuf::int32 value);
+
+  // optional int32 s_bin = 4 [default = 4];
+  inline bool has_s_bin() const;
+  inline void clear_s_bin();
+  static const int kSBinFieldNumber = 4;
+  inline ::google::protobuf::int32 s_bin() const;
+  inline void set_s_bin(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:rl2d.HSColorHistogram)
+ private:
+  inline void set_has_hs_color_refinement();
+  inline void clear_has_hs_color_refinement();
+  inline void set_has_threshold();
+  inline void clear_has_threshold();
+  inline void set_has_h_bin();
+  inline void clear_has_h_bin();
+  inline void set_has_s_bin();
+  inline void clear_has_s_bin();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool hs_color_refinement_;
+  float threshold_;
+  ::google::protobuf::int32 h_bin_;
+  ::google::protobuf::int32 s_bin_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Config_2eproto();
+  friend void protobuf_AssignDesc_Config_2eproto();
+  friend void protobuf_ShutdownFile_Config_2eproto();
+
+  void InitAsDefaultInstance();
+  static HSColorHistogram* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RuntimeConfig : public ::google::protobuf::Message {
+ public:
+  RuntimeConfig();
+  virtual ~RuntimeConfig();
+
+  RuntimeConfig(const RuntimeConfig& from);
+
+  inline RuntimeConfig& operator=(const RuntimeConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RuntimeConfig& default_instance();
+
+  void Swap(RuntimeConfig* other);
+
+  // implements Message ----------------------------------------------
+
+  RuntimeConfig* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RuntimeConfig& from);
+  void MergeFrom(const RuntimeConfig& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .rl2d.ObjectsConfig objects_config = 1;
+  inline bool has_objects_config() const;
+  inline void clear_objects_config();
+  static const int kObjectsConfigFieldNumber = 1;
+  inline const ::rl2d::ObjectsConfig& objects_config() const;
+  inline ::rl2d::ObjectsConfig* mutable_objects_config();
+  inline ::rl2d::ObjectsConfig* release_objects_config();
+  inline void set_allocated_objects_config(::rl2d::ObjectsConfig* objects_config);
+
+  // required .rl2d.CameraIntrinsic cam_intrinsic = 2;
+  inline bool has_cam_intrinsic() const;
+  inline void clear_cam_intrinsic();
+  static const int kCamIntrinsicFieldNumber = 2;
+  inline const ::rl2d::CameraIntrinsic& cam_intrinsic() const;
+  inline ::rl2d::CameraIntrinsic* mutable_cam_intrinsic();
+  inline ::rl2d::CameraIntrinsic* release_cam_intrinsic();
+  inline void set_allocated_cam_intrinsic(::rl2d::CameraIntrinsic* cam_intrinsic);
+
+  // required .rl2d.DetectorConfig detector_config = 3;
+  inline bool has_detector_config() const;
+  inline void clear_detector_config();
+  static const int kDetectorConfigFieldNumber = 3;
+  inline const ::rl2d::DetectorConfig& detector_config() const;
+  inline ::rl2d::DetectorConfig* mutable_detector_config();
+  inline ::rl2d::DetectorConfig* release_detector_config();
+  inline void set_allocated_detector_config(::rl2d::DetectorConfig* detector_config);
+
+  // required .rl2d.DataSource data_source = 4;
+  inline bool has_data_source() const;
+  inline void clear_data_source();
+  static const int kDataSourceFieldNumber = 4;
+  inline const ::rl2d::DataSource& data_source() const;
+  inline ::rl2d::DataSource* mutable_data_source();
+  inline ::rl2d::DataSource* release_data_source();
+  inline void set_allocated_data_source(::rl2d::DataSource* data_source);
+
+  // required .rl2d.HSColorHistogram hs_color_hist = 5;
+  inline bool has_hs_color_hist() const;
+  inline void clear_hs_color_hist();
+  static const int kHsColorHistFieldNumber = 5;
+  inline const ::rl2d::HSColorHistogram& hs_color_hist() const;
+  inline ::rl2d::HSColorHistogram* mutable_hs_color_hist();
+  inline ::rl2d::HSColorHistogram* release_hs_color_hist();
+  inline void set_allocated_hs_color_hist(::rl2d::HSColorHistogram* hs_color_hist);
+
+  // @@protoc_insertion_point(class_scope:rl2d.RuntimeConfig)
+ private:
+  inline void set_has_objects_config();
+  inline void clear_has_objects_config();
+  inline void set_has_cam_intrinsic();
+  inline void clear_has_cam_intrinsic();
+  inline void set_has_detector_config();
+  inline void clear_has_detector_config();
+  inline void set_has_data_source();
+  inline void clear_has_data_source();
+  inline void set_has_hs_color_hist();
+  inline void clear_has_hs_color_hist();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::rl2d::ObjectsConfig* objects_config_;
+  ::rl2d::CameraIntrinsic* cam_intrinsic_;
+  ::rl2d::DetectorConfig* detector_config_;
+  ::rl2d::DataSource* data_source_;
+  ::rl2d::HSColorHistogram* hs_color_hist_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Config_2eproto();
+  friend void protobuf_AssignDesc_Config_2eproto();
+  friend void protobuf_ShutdownFile_Config_2eproto();
+
+  void InitAsDefaultInstance();
+  static RuntimeConfig* default_instance_;
+};
 // ===================================================================
 
 
 // ===================================================================
 
-// ObjectConfig_ImageDirAndPoseFilePair
+// ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair
 
 // required string img_dir = 1;
-inline bool ObjectConfig_ImageDirAndPoseFilePair::has_img_dir() const {
+inline bool ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::has_img_dir() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_has_img_dir() {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_has_img_dir() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::clear_has_img_dir() {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::clear_has_img_dir() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::clear_img_dir() {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::clear_img_dir() {
   if (img_dir_ != &::google::protobuf::internal::kEmptyString) {
     img_dir_->clear();
   }
   clear_has_img_dir();
 }
-inline const ::std::string& ObjectConfig_ImageDirAndPoseFilePair::img_dir() const {
+inline const ::std::string& ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::img_dir() const {
   return *img_dir_;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_img_dir(const ::std::string& value) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_img_dir(const ::std::string& value) {
   set_has_img_dir();
   if (img_dir_ == &::google::protobuf::internal::kEmptyString) {
     img_dir_ = new ::std::string;
   }
   img_dir_->assign(value);
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_img_dir(const char* value) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_img_dir(const char* value) {
   set_has_img_dir();
   if (img_dir_ == &::google::protobuf::internal::kEmptyString) {
     img_dir_ = new ::std::string;
   }
   img_dir_->assign(value);
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_img_dir(const char* value, size_t size) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_img_dir(const char* value, size_t size) {
   set_has_img_dir();
   if (img_dir_ == &::google::protobuf::internal::kEmptyString) {
     img_dir_ = new ::std::string;
   }
   img_dir_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ObjectConfig_ImageDirAndPoseFilePair::mutable_img_dir() {
+inline ::std::string* ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::mutable_img_dir() {
   set_has_img_dir();
   if (img_dir_ == &::google::protobuf::internal::kEmptyString) {
     img_dir_ = new ::std::string;
   }
   return img_dir_;
 }
-inline ::std::string* ObjectConfig_ImageDirAndPoseFilePair::release_img_dir() {
+inline ::std::string* ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::release_img_dir() {
   clear_has_img_dir();
   if (img_dir_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -978,7 +1400,7 @@ inline ::std::string* ObjectConfig_ImageDirAndPoseFilePair::release_img_dir() {
     return temp;
   }
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_allocated_img_dir(::std::string* img_dir) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_allocated_img_dir(::std::string* img_dir) {
   if (img_dir_ != &::google::protobuf::internal::kEmptyString) {
     delete img_dir_;
   }
@@ -992,53 +1414,53 @@ inline void ObjectConfig_ImageDirAndPoseFilePair::set_allocated_img_dir(::std::s
 }
 
 // required string pose_path = 2;
-inline bool ObjectConfig_ImageDirAndPoseFilePair::has_pose_path() const {
+inline bool ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::has_pose_path() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_has_pose_path() {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_has_pose_path() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::clear_has_pose_path() {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::clear_has_pose_path() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::clear_pose_path() {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::clear_pose_path() {
   if (pose_path_ != &::google::protobuf::internal::kEmptyString) {
     pose_path_->clear();
   }
   clear_has_pose_path();
 }
-inline const ::std::string& ObjectConfig_ImageDirAndPoseFilePair::pose_path() const {
+inline const ::std::string& ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::pose_path() const {
   return *pose_path_;
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_pose_path(const ::std::string& value) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_pose_path(const ::std::string& value) {
   set_has_pose_path();
   if (pose_path_ == &::google::protobuf::internal::kEmptyString) {
     pose_path_ = new ::std::string;
   }
   pose_path_->assign(value);
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_pose_path(const char* value) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_pose_path(const char* value) {
   set_has_pose_path();
   if (pose_path_ == &::google::protobuf::internal::kEmptyString) {
     pose_path_ = new ::std::string;
   }
   pose_path_->assign(value);
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_pose_path(const char* value, size_t size) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_pose_path(const char* value, size_t size) {
   set_has_pose_path();
   if (pose_path_ == &::google::protobuf::internal::kEmptyString) {
     pose_path_ = new ::std::string;
   }
   pose_path_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ObjectConfig_ImageDirAndPoseFilePair::mutable_pose_path() {
+inline ::std::string* ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::mutable_pose_path() {
   set_has_pose_path();
   if (pose_path_ == &::google::protobuf::internal::kEmptyString) {
     pose_path_ = new ::std::string;
   }
   return pose_path_;
 }
-inline ::std::string* ObjectConfig_ImageDirAndPoseFilePair::release_pose_path() {
+inline ::std::string* ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::release_pose_path() {
   clear_has_pose_path();
   if (pose_path_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -1048,7 +1470,7 @@ inline ::std::string* ObjectConfig_ImageDirAndPoseFilePair::release_pose_path() 
     return temp;
   }
 }
-inline void ObjectConfig_ImageDirAndPoseFilePair::set_allocated_pose_path(::std::string* pose_path) {
+inline void ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair::set_allocated_pose_path(::std::string* pose_path) {
   if (pose_path_ != &::google::protobuf::internal::kEmptyString) {
     delete pose_path_;
   }
@@ -1063,416 +1485,486 @@ inline void ObjectConfig_ImageDirAndPoseFilePair::set_allocated_pose_path(::std:
 
 // -------------------------------------------------------------------
 
-// ObjectConfig_OnlineRenderingParams
+// ObjectsConfig_ObjectConfig_OnlineRenderingParams
 
 // required float min_radius = 1;
-inline bool ObjectConfig_OnlineRenderingParams::has_min_radius() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_min_radius() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_min_radius() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_min_radius() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_min_radius() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_min_radius() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_min_radius() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_min_radius() {
   min_radius_ = 0;
   clear_has_min_radius();
 }
-inline float ObjectConfig_OnlineRenderingParams::min_radius() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::min_radius() const {
   return min_radius_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_min_radius(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_min_radius(float value) {
   set_has_min_radius();
   min_radius_ = value;
 }
 
 // required float max_radius = 2;
-inline bool ObjectConfig_OnlineRenderingParams::has_max_radius() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_max_radius() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_max_radius() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_max_radius() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_max_radius() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_max_radius() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_max_radius() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_max_radius() {
   max_radius_ = 0;
   clear_has_max_radius();
 }
-inline float ObjectConfig_OnlineRenderingParams::max_radius() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::max_radius() const {
   return max_radius_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_max_radius(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_max_radius(float value) {
   set_has_max_radius();
   max_radius_ = value;
 }
 
 // required float radius_step = 3;
-inline bool ObjectConfig_OnlineRenderingParams::has_radius_step() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_radius_step() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_radius_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_radius_step() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_radius_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_radius_step() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_radius_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_radius_step() {
   radius_step_ = 0;
   clear_has_radius_step();
 }
-inline float ObjectConfig_OnlineRenderingParams::radius_step() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::radius_step() const {
   return radius_step_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_radius_step(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_radius_step(float value) {
   set_has_radius_step();
   radius_step_ = value;
 }
 
 // required float min_latitude = 4;
-inline bool ObjectConfig_OnlineRenderingParams::has_min_latitude() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_min_latitude() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_min_latitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_min_latitude() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_min_latitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_min_latitude() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_min_latitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_min_latitude() {
   min_latitude_ = 0;
   clear_has_min_latitude();
 }
-inline float ObjectConfig_OnlineRenderingParams::min_latitude() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::min_latitude() const {
   return min_latitude_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_min_latitude(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_min_latitude(float value) {
   set_has_min_latitude();
   min_latitude_ = value;
 }
 
 // required float max_latitude = 5;
-inline bool ObjectConfig_OnlineRenderingParams::has_max_latitude() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_max_latitude() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_max_latitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_max_latitude() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_max_latitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_max_latitude() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_max_latitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_max_latitude() {
   max_latitude_ = 0;
   clear_has_max_latitude();
 }
-inline float ObjectConfig_OnlineRenderingParams::max_latitude() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::max_latitude() const {
   return max_latitude_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_max_latitude(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_max_latitude(float value) {
   set_has_max_latitude();
   max_latitude_ = value;
 }
 
 // required float latitude_step = 6;
-inline bool ObjectConfig_OnlineRenderingParams::has_latitude_step() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_latitude_step() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_latitude_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_latitude_step() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_latitude_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_latitude_step() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_latitude_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_latitude_step() {
   latitude_step_ = 0;
   clear_has_latitude_step();
 }
-inline float ObjectConfig_OnlineRenderingParams::latitude_step() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::latitude_step() const {
   return latitude_step_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_latitude_step(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_latitude_step(float value) {
   set_has_latitude_step();
   latitude_step_ = value;
 }
 
 // required float min_longitude = 7;
-inline bool ObjectConfig_OnlineRenderingParams::has_min_longitude() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_min_longitude() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_min_longitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_min_longitude() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_min_longitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_min_longitude() {
   _has_bits_[0] &= ~0x00000040u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_min_longitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_min_longitude() {
   min_longitude_ = 0;
   clear_has_min_longitude();
 }
-inline float ObjectConfig_OnlineRenderingParams::min_longitude() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::min_longitude() const {
   return min_longitude_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_min_longitude(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_min_longitude(float value) {
   set_has_min_longitude();
   min_longitude_ = value;
 }
 
 // required float max_longitude = 8;
-inline bool ObjectConfig_OnlineRenderingParams::has_max_longitude() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_max_longitude() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_max_longitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_max_longitude() {
   _has_bits_[0] |= 0x00000080u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_max_longitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_max_longitude() {
   _has_bits_[0] &= ~0x00000080u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_max_longitude() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_max_longitude() {
   max_longitude_ = 0;
   clear_has_max_longitude();
 }
-inline float ObjectConfig_OnlineRenderingParams::max_longitude() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::max_longitude() const {
   return max_longitude_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_max_longitude(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_max_longitude(float value) {
   set_has_max_longitude();
   max_longitude_ = value;
 }
 
 // required float longitude_step = 9;
-inline bool ObjectConfig_OnlineRenderingParams::has_longitude_step() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_longitude_step() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_longitude_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_longitude_step() {
   _has_bits_[0] |= 0x00000100u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_longitude_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_longitude_step() {
   _has_bits_[0] &= ~0x00000100u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_longitude_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_longitude_step() {
   longitude_step_ = 0;
   clear_has_longitude_step();
 }
-inline float ObjectConfig_OnlineRenderingParams::longitude_step() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::longitude_step() const {
   return longitude_step_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_longitude_step(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_longitude_step(float value) {
   set_has_longitude_step();
   longitude_step_ = value;
 }
 
 // required float min_inplane = 10;
-inline bool ObjectConfig_OnlineRenderingParams::has_min_inplane() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_min_inplane() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_min_inplane() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_min_inplane() {
   _has_bits_[0] |= 0x00000200u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_min_inplane() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_min_inplane() {
   _has_bits_[0] &= ~0x00000200u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_min_inplane() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_min_inplane() {
   min_inplane_ = 0;
   clear_has_min_inplane();
 }
-inline float ObjectConfig_OnlineRenderingParams::min_inplane() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::min_inplane() const {
   return min_inplane_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_min_inplane(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_min_inplane(float value) {
   set_has_min_inplane();
   min_inplane_ = value;
 }
 
 // required float max_inplane = 11;
-inline bool ObjectConfig_OnlineRenderingParams::has_max_inplane() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_max_inplane() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_max_inplane() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_max_inplane() {
   _has_bits_[0] |= 0x00000400u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_max_inplane() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_max_inplane() {
   _has_bits_[0] &= ~0x00000400u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_max_inplane() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_max_inplane() {
   max_inplane_ = 0;
   clear_has_max_inplane();
 }
-inline float ObjectConfig_OnlineRenderingParams::max_inplane() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::max_inplane() const {
   return max_inplane_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_max_inplane(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_max_inplane(float value) {
   set_has_max_inplane();
   max_inplane_ = value;
 }
 
 // required float inplane_step = 12;
-inline bool ObjectConfig_OnlineRenderingParams::has_inplane_step() const {
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_inplane_step() const {
   return (_has_bits_[0] & 0x00000800u) != 0;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_has_inplane_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_inplane_step() {
   _has_bits_[0] |= 0x00000800u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_has_inplane_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_inplane_step() {
   _has_bits_[0] &= ~0x00000800u;
 }
-inline void ObjectConfig_OnlineRenderingParams::clear_inplane_step() {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_inplane_step() {
   inplane_step_ = 0;
   clear_has_inplane_step();
 }
-inline float ObjectConfig_OnlineRenderingParams::inplane_step() const {
+inline float ObjectsConfig_ObjectConfig_OnlineRenderingParams::inplane_step() const {
   return inplane_step_;
 }
-inline void ObjectConfig_OnlineRenderingParams::set_inplane_step(float value) {
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_inplane_step(float value) {
   set_has_inplane_step();
   inplane_step_ = value;
 }
 
+// required string out_dir = 13;
+inline bool ObjectsConfig_ObjectConfig_OnlineRenderingParams::has_out_dir() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_has_out_dir() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_has_out_dir() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::clear_out_dir() {
+  if (out_dir_ != &::google::protobuf::internal::kEmptyString) {
+    out_dir_->clear();
+  }
+  clear_has_out_dir();
+}
+inline const ::std::string& ObjectsConfig_ObjectConfig_OnlineRenderingParams::out_dir() const {
+  return *out_dir_;
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_out_dir(const ::std::string& value) {
+  set_has_out_dir();
+  if (out_dir_ == &::google::protobuf::internal::kEmptyString) {
+    out_dir_ = new ::std::string;
+  }
+  out_dir_->assign(value);
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_out_dir(const char* value) {
+  set_has_out_dir();
+  if (out_dir_ == &::google::protobuf::internal::kEmptyString) {
+    out_dir_ = new ::std::string;
+  }
+  out_dir_->assign(value);
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_out_dir(const char* value, size_t size) {
+  set_has_out_dir();
+  if (out_dir_ == &::google::protobuf::internal::kEmptyString) {
+    out_dir_ = new ::std::string;
+  }
+  out_dir_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ObjectsConfig_ObjectConfig_OnlineRenderingParams::mutable_out_dir() {
+  set_has_out_dir();
+  if (out_dir_ == &::google::protobuf::internal::kEmptyString) {
+    out_dir_ = new ::std::string;
+  }
+  return out_dir_;
+}
+inline ::std::string* ObjectsConfig_ObjectConfig_OnlineRenderingParams::release_out_dir() {
+  clear_has_out_dir();
+  if (out_dir_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = out_dir_;
+    out_dir_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ObjectsConfig_ObjectConfig_OnlineRenderingParams::set_allocated_out_dir(::std::string* out_dir) {
+  if (out_dir_ != &::google::protobuf::internal::kEmptyString) {
+    delete out_dir_;
+  }
+  if (out_dir) {
+    set_has_out_dir();
+    out_dir_ = out_dir;
+  } else {
+    clear_has_out_dir();
+    out_dir_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
-// ObjectConfig_RGB
+// ObjectsConfig_ObjectConfig_RGB
 
 // optional int32 R = 1 [default = 255];
-inline bool ObjectConfig_RGB::has_r() const {
+inline bool ObjectsConfig_ObjectConfig_RGB::has_r() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ObjectConfig_RGB::set_has_r() {
+inline void ObjectsConfig_ObjectConfig_RGB::set_has_r() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ObjectConfig_RGB::clear_has_r() {
+inline void ObjectsConfig_ObjectConfig_RGB::clear_has_r() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ObjectConfig_RGB::clear_r() {
+inline void ObjectsConfig_ObjectConfig_RGB::clear_r() {
   r_ = 255;
   clear_has_r();
 }
-inline ::google::protobuf::int32 ObjectConfig_RGB::r() const {
+inline ::google::protobuf::int32 ObjectsConfig_ObjectConfig_RGB::r() const {
   return r_;
 }
-inline void ObjectConfig_RGB::set_r(::google::protobuf::int32 value) {
+inline void ObjectsConfig_ObjectConfig_RGB::set_r(::google::protobuf::int32 value) {
   set_has_r();
   r_ = value;
 }
 
 // optional int32 G = 2 [default = 0];
-inline bool ObjectConfig_RGB::has_g() const {
+inline bool ObjectsConfig_ObjectConfig_RGB::has_g() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ObjectConfig_RGB::set_has_g() {
+inline void ObjectsConfig_ObjectConfig_RGB::set_has_g() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ObjectConfig_RGB::clear_has_g() {
+inline void ObjectsConfig_ObjectConfig_RGB::clear_has_g() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ObjectConfig_RGB::clear_g() {
+inline void ObjectsConfig_ObjectConfig_RGB::clear_g() {
   g_ = 0;
   clear_has_g();
 }
-inline ::google::protobuf::int32 ObjectConfig_RGB::g() const {
+inline ::google::protobuf::int32 ObjectsConfig_ObjectConfig_RGB::g() const {
   return g_;
 }
-inline void ObjectConfig_RGB::set_g(::google::protobuf::int32 value) {
+inline void ObjectsConfig_ObjectConfig_RGB::set_g(::google::protobuf::int32 value) {
   set_has_g();
   g_ = value;
 }
 
 // optional int32 B = 3 [default = 0];
-inline bool ObjectConfig_RGB::has_b() const {
+inline bool ObjectsConfig_ObjectConfig_RGB::has_b() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ObjectConfig_RGB::set_has_b() {
+inline void ObjectsConfig_ObjectConfig_RGB::set_has_b() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ObjectConfig_RGB::clear_has_b() {
+inline void ObjectsConfig_ObjectConfig_RGB::clear_has_b() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ObjectConfig_RGB::clear_b() {
+inline void ObjectsConfig_ObjectConfig_RGB::clear_b() {
   b_ = 0;
   clear_has_b();
 }
-inline ::google::protobuf::int32 ObjectConfig_RGB::b() const {
+inline ::google::protobuf::int32 ObjectsConfig_ObjectConfig_RGB::b() const {
   return b_;
 }
-inline void ObjectConfig_RGB::set_b(::google::protobuf::int32 value) {
+inline void ObjectsConfig_ObjectConfig_RGB::set_b(::google::protobuf::int32 value) {
   set_has_b();
   b_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// ObjectConfig
+// ObjectsConfig_ObjectConfig
 
 // required int32 id = 1;
-inline bool ObjectConfig::has_id() const {
+inline bool ObjectsConfig_ObjectConfig::has_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ObjectConfig::set_has_id() {
+inline void ObjectsConfig_ObjectConfig::set_has_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ObjectConfig::clear_has_id() {
+inline void ObjectsConfig_ObjectConfig::clear_has_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ObjectConfig::clear_id() {
+inline void ObjectsConfig_ObjectConfig::clear_id() {
   id_ = 0;
   clear_has_id();
 }
-inline ::google::protobuf::int32 ObjectConfig::id() const {
+inline ::google::protobuf::int32 ObjectsConfig_ObjectConfig::id() const {
   return id_;
 }
-inline void ObjectConfig::set_id(::google::protobuf::int32 value) {
+inline void ObjectsConfig_ObjectConfig::set_id(::google::protobuf::int32 value) {
   set_has_id();
   id_ = value;
 }
 
 // required string name = 2;
-inline bool ObjectConfig::has_name() const {
+inline bool ObjectsConfig_ObjectConfig::has_name() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ObjectConfig::set_has_name() {
+inline void ObjectsConfig_ObjectConfig::set_has_name() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ObjectConfig::clear_has_name() {
+inline void ObjectsConfig_ObjectConfig::clear_has_name() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ObjectConfig::clear_name() {
+inline void ObjectsConfig_ObjectConfig::clear_name() {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     name_->clear();
   }
   clear_has_name();
 }
-inline const ::std::string& ObjectConfig::name() const {
+inline const ::std::string& ObjectsConfig_ObjectConfig::name() const {
   return *name_;
 }
-inline void ObjectConfig::set_name(const ::std::string& value) {
+inline void ObjectsConfig_ObjectConfig::set_name(const ::std::string& value) {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void ObjectConfig::set_name(const char* value) {
+inline void ObjectsConfig_ObjectConfig::set_name(const char* value) {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   name_->assign(value);
 }
-inline void ObjectConfig::set_name(const char* value, size_t size) {
+inline void ObjectsConfig_ObjectConfig::set_name(const char* value, size_t size) {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ObjectConfig::mutable_name() {
+inline ::std::string* ObjectsConfig_ObjectConfig::mutable_name() {
   set_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     name_ = new ::std::string;
   }
   return name_;
 }
-inline ::std::string* ObjectConfig::release_name() {
+inline ::std::string* ObjectsConfig_ObjectConfig::release_name() {
   clear_has_name();
   if (name_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -1482,7 +1974,7 @@ inline ::std::string* ObjectConfig::release_name() {
     return temp;
   }
 }
-inline void ObjectConfig::set_allocated_name(::std::string* name) {
+inline void ObjectsConfig_ObjectConfig::set_allocated_name(::std::string* name) {
   if (name_ != &::google::protobuf::internal::kEmptyString) {
     delete name_;
   }
@@ -1496,53 +1988,53 @@ inline void ObjectConfig::set_allocated_name(::std::string* name) {
 }
 
 // optional string model_path = 5;
-inline bool ObjectConfig::has_model_path() const {
+inline bool ObjectsConfig_ObjectConfig::has_model_path() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ObjectConfig::set_has_model_path() {
+inline void ObjectsConfig_ObjectConfig::set_has_model_path() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ObjectConfig::clear_has_model_path() {
+inline void ObjectsConfig_ObjectConfig::clear_has_model_path() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ObjectConfig::clear_model_path() {
+inline void ObjectsConfig_ObjectConfig::clear_model_path() {
   if (model_path_ != &::google::protobuf::internal::kEmptyString) {
     model_path_->clear();
   }
   clear_has_model_path();
 }
-inline const ::std::string& ObjectConfig::model_path() const {
+inline const ::std::string& ObjectsConfig_ObjectConfig::model_path() const {
   return *model_path_;
 }
-inline void ObjectConfig::set_model_path(const ::std::string& value) {
+inline void ObjectsConfig_ObjectConfig::set_model_path(const ::std::string& value) {
   set_has_model_path();
   if (model_path_ == &::google::protobuf::internal::kEmptyString) {
     model_path_ = new ::std::string;
   }
   model_path_->assign(value);
 }
-inline void ObjectConfig::set_model_path(const char* value) {
+inline void ObjectsConfig_ObjectConfig::set_model_path(const char* value) {
   set_has_model_path();
   if (model_path_ == &::google::protobuf::internal::kEmptyString) {
     model_path_ = new ::std::string;
   }
   model_path_->assign(value);
 }
-inline void ObjectConfig::set_model_path(const char* value, size_t size) {
+inline void ObjectsConfig_ObjectConfig::set_model_path(const char* value, size_t size) {
   set_has_model_path();
   if (model_path_ == &::google::protobuf::internal::kEmptyString) {
     model_path_ = new ::std::string;
   }
   model_path_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ObjectConfig::mutable_model_path() {
+inline ::std::string* ObjectsConfig_ObjectConfig::mutable_model_path() {
   set_has_model_path();
   if (model_path_ == &::google::protobuf::internal::kEmptyString) {
     model_path_ = new ::std::string;
   }
   return model_path_;
 }
-inline ::std::string* ObjectConfig::release_model_path() {
+inline ::std::string* ObjectsConfig_ObjectConfig::release_model_path() {
   clear_has_model_path();
   if (model_path_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -1552,7 +2044,7 @@ inline ::std::string* ObjectConfig::release_model_path() {
     return temp;
   }
 }
-inline void ObjectConfig::set_allocated_model_path(::std::string* model_path) {
+inline void ObjectsConfig_ObjectConfig::set_allocated_model_path(::std::string* model_path) {
   if (model_path_ != &::google::protobuf::internal::kEmptyString) {
     delete model_path_;
   }
@@ -1565,104 +2057,104 @@ inline void ObjectConfig::set_allocated_model_path(::std::string* model_path) {
   }
 }
 
-// repeated .rl2d.ObjectConfig.ImageDirAndPoseFilePair imageDir_poseFile_pair = 3;
-inline int ObjectConfig::imagedir_posefile_pair_size() const {
+// repeated .rl2d.ObjectsConfig.ObjectConfig.ImageDirAndPoseFilePair imageDir_poseFile_pair = 3;
+inline int ObjectsConfig_ObjectConfig::imagedir_posefile_pair_size() const {
   return imagedir_posefile_pair_.size();
 }
-inline void ObjectConfig::clear_imagedir_posefile_pair() {
+inline void ObjectsConfig_ObjectConfig::clear_imagedir_posefile_pair() {
   imagedir_posefile_pair_.Clear();
 }
-inline const ::rl2d::ObjectConfig_ImageDirAndPoseFilePair& ObjectConfig::imagedir_posefile_pair(int index) const {
+inline const ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& ObjectsConfig_ObjectConfig::imagedir_posefile_pair(int index) const {
   return imagedir_posefile_pair_.Get(index);
 }
-inline ::rl2d::ObjectConfig_ImageDirAndPoseFilePair* ObjectConfig::mutable_imagedir_posefile_pair(int index) {
+inline ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* ObjectsConfig_ObjectConfig::mutable_imagedir_posefile_pair(int index) {
   return imagedir_posefile_pair_.Mutable(index);
 }
-inline ::rl2d::ObjectConfig_ImageDirAndPoseFilePair* ObjectConfig::add_imagedir_posefile_pair() {
+inline ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair* ObjectsConfig_ObjectConfig::add_imagedir_posefile_pair() {
   return imagedir_posefile_pair_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig_ImageDirAndPoseFilePair >&
-ObjectConfig::imagedir_posefile_pair() const {
+inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair >&
+ObjectsConfig_ObjectConfig::imagedir_posefile_pair() const {
   return imagedir_posefile_pair_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig_ImageDirAndPoseFilePair >*
-ObjectConfig::mutable_imagedir_posefile_pair() {
+inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair >*
+ObjectsConfig_ObjectConfig::mutable_imagedir_posefile_pair() {
   return &imagedir_posefile_pair_;
 }
 
 // repeated string color_hist_dir = 4;
-inline int ObjectConfig::color_hist_dir_size() const {
+inline int ObjectsConfig_ObjectConfig::color_hist_dir_size() const {
   return color_hist_dir_.size();
 }
-inline void ObjectConfig::clear_color_hist_dir() {
+inline void ObjectsConfig_ObjectConfig::clear_color_hist_dir() {
   color_hist_dir_.Clear();
 }
-inline const ::std::string& ObjectConfig::color_hist_dir(int index) const {
+inline const ::std::string& ObjectsConfig_ObjectConfig::color_hist_dir(int index) const {
   return color_hist_dir_.Get(index);
 }
-inline ::std::string* ObjectConfig::mutable_color_hist_dir(int index) {
+inline ::std::string* ObjectsConfig_ObjectConfig::mutable_color_hist_dir(int index) {
   return color_hist_dir_.Mutable(index);
 }
-inline void ObjectConfig::set_color_hist_dir(int index, const ::std::string& value) {
+inline void ObjectsConfig_ObjectConfig::set_color_hist_dir(int index, const ::std::string& value) {
   color_hist_dir_.Mutable(index)->assign(value);
 }
-inline void ObjectConfig::set_color_hist_dir(int index, const char* value) {
+inline void ObjectsConfig_ObjectConfig::set_color_hist_dir(int index, const char* value) {
   color_hist_dir_.Mutable(index)->assign(value);
 }
-inline void ObjectConfig::set_color_hist_dir(int index, const char* value, size_t size) {
+inline void ObjectsConfig_ObjectConfig::set_color_hist_dir(int index, const char* value, size_t size) {
   color_hist_dir_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ObjectConfig::add_color_hist_dir() {
+inline ::std::string* ObjectsConfig_ObjectConfig::add_color_hist_dir() {
   return color_hist_dir_.Add();
 }
-inline void ObjectConfig::add_color_hist_dir(const ::std::string& value) {
+inline void ObjectsConfig_ObjectConfig::add_color_hist_dir(const ::std::string& value) {
   color_hist_dir_.Add()->assign(value);
 }
-inline void ObjectConfig::add_color_hist_dir(const char* value) {
+inline void ObjectsConfig_ObjectConfig::add_color_hist_dir(const char* value) {
   color_hist_dir_.Add()->assign(value);
 }
-inline void ObjectConfig::add_color_hist_dir(const char* value, size_t size) {
+inline void ObjectsConfig_ObjectConfig::add_color_hist_dir(const char* value, size_t size) {
   color_hist_dir_.Add()->assign(reinterpret_cast<const char*>(value), size);
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-ObjectConfig::color_hist_dir() const {
+ObjectsConfig_ObjectConfig::color_hist_dir() const {
   return color_hist_dir_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-ObjectConfig::mutable_color_hist_dir() {
+ObjectsConfig_ObjectConfig::mutable_color_hist_dir() {
   return &color_hist_dir_;
 }
 
-// optional .rl2d.ObjectConfig.OnlineRenderingParams online_rendering_params = 6;
-inline bool ObjectConfig::has_online_rendering_params() const {
+// optional .rl2d.ObjectsConfig.ObjectConfig.OnlineRenderingParams online_rendering_params = 6;
+inline bool ObjectsConfig_ObjectConfig::has_online_rendering_params() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void ObjectConfig::set_has_online_rendering_params() {
+inline void ObjectsConfig_ObjectConfig::set_has_online_rendering_params() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void ObjectConfig::clear_has_online_rendering_params() {
+inline void ObjectsConfig_ObjectConfig::clear_has_online_rendering_params() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void ObjectConfig::clear_online_rendering_params() {
-  if (online_rendering_params_ != NULL) online_rendering_params_->::rl2d::ObjectConfig_OnlineRenderingParams::Clear();
+inline void ObjectsConfig_ObjectConfig::clear_online_rendering_params() {
+  if (online_rendering_params_ != NULL) online_rendering_params_->::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams::Clear();
   clear_has_online_rendering_params();
 }
-inline const ::rl2d::ObjectConfig_OnlineRenderingParams& ObjectConfig::online_rendering_params() const {
+inline const ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams& ObjectsConfig_ObjectConfig::online_rendering_params() const {
   return online_rendering_params_ != NULL ? *online_rendering_params_ : *default_instance_->online_rendering_params_;
 }
-inline ::rl2d::ObjectConfig_OnlineRenderingParams* ObjectConfig::mutable_online_rendering_params() {
+inline ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* ObjectsConfig_ObjectConfig::mutable_online_rendering_params() {
   set_has_online_rendering_params();
-  if (online_rendering_params_ == NULL) online_rendering_params_ = new ::rl2d::ObjectConfig_OnlineRenderingParams;
+  if (online_rendering_params_ == NULL) online_rendering_params_ = new ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams;
   return online_rendering_params_;
 }
-inline ::rl2d::ObjectConfig_OnlineRenderingParams* ObjectConfig::release_online_rendering_params() {
+inline ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* ObjectsConfig_ObjectConfig::release_online_rendering_params() {
   clear_has_online_rendering_params();
-  ::rl2d::ObjectConfig_OnlineRenderingParams* temp = online_rendering_params_;
+  ::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* temp = online_rendering_params_;
   online_rendering_params_ = NULL;
   return temp;
 }
-inline void ObjectConfig::set_allocated_online_rendering_params(::rl2d::ObjectConfig_OnlineRenderingParams* online_rendering_params) {
+inline void ObjectsConfig_ObjectConfig::set_allocated_online_rendering_params(::rl2d::ObjectsConfig_ObjectConfig_OnlineRenderingParams* online_rendering_params) {
   delete online_rendering_params_;
   online_rendering_params_ = online_rendering_params;
   if (online_rendering_params) {
@@ -1672,35 +2164,35 @@ inline void ObjectConfig::set_allocated_online_rendering_params(::rl2d::ObjectCo
   }
 }
 
-// optional .rl2d.ObjectConfig.RGB bounding_box_color = 7;
-inline bool ObjectConfig::has_bounding_box_color() const {
+// optional .rl2d.ObjectsConfig.ObjectConfig.RGB bounding_box_color = 7;
+inline bool ObjectsConfig_ObjectConfig::has_bounding_box_color() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void ObjectConfig::set_has_bounding_box_color() {
+inline void ObjectsConfig_ObjectConfig::set_has_bounding_box_color() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void ObjectConfig::clear_has_bounding_box_color() {
+inline void ObjectsConfig_ObjectConfig::clear_has_bounding_box_color() {
   _has_bits_[0] &= ~0x00000040u;
 }
-inline void ObjectConfig::clear_bounding_box_color() {
-  if (bounding_box_color_ != NULL) bounding_box_color_->::rl2d::ObjectConfig_RGB::Clear();
+inline void ObjectsConfig_ObjectConfig::clear_bounding_box_color() {
+  if (bounding_box_color_ != NULL) bounding_box_color_->::rl2d::ObjectsConfig_ObjectConfig_RGB::Clear();
   clear_has_bounding_box_color();
 }
-inline const ::rl2d::ObjectConfig_RGB& ObjectConfig::bounding_box_color() const {
+inline const ::rl2d::ObjectsConfig_ObjectConfig_RGB& ObjectsConfig_ObjectConfig::bounding_box_color() const {
   return bounding_box_color_ != NULL ? *bounding_box_color_ : *default_instance_->bounding_box_color_;
 }
-inline ::rl2d::ObjectConfig_RGB* ObjectConfig::mutable_bounding_box_color() {
+inline ::rl2d::ObjectsConfig_ObjectConfig_RGB* ObjectsConfig_ObjectConfig::mutable_bounding_box_color() {
   set_has_bounding_box_color();
-  if (bounding_box_color_ == NULL) bounding_box_color_ = new ::rl2d::ObjectConfig_RGB;
+  if (bounding_box_color_ == NULL) bounding_box_color_ = new ::rl2d::ObjectsConfig_ObjectConfig_RGB;
   return bounding_box_color_;
 }
-inline ::rl2d::ObjectConfig_RGB* ObjectConfig::release_bounding_box_color() {
+inline ::rl2d::ObjectsConfig_ObjectConfig_RGB* ObjectsConfig_ObjectConfig::release_bounding_box_color() {
   clear_has_bounding_box_color();
-  ::rl2d::ObjectConfig_RGB* temp = bounding_box_color_;
+  ::rl2d::ObjectsConfig_ObjectConfig_RGB* temp = bounding_box_color_;
   bounding_box_color_ = NULL;
   return temp;
 }
-inline void ObjectConfig::set_allocated_bounding_box_color(::rl2d::ObjectConfig_RGB* bounding_box_color) {
+inline void ObjectsConfig_ObjectConfig::set_allocated_bounding_box_color(::rl2d::ObjectsConfig_ObjectConfig_RGB* bounding_box_color) {
   delete bounding_box_color_;
   bounding_box_color_ = bounding_box_color;
   if (bounding_box_color) {
@@ -1714,27 +2206,27 @@ inline void ObjectConfig::set_allocated_bounding_box_color(::rl2d::ObjectConfig_
 
 // ObjectsConfig
 
-// repeated .rl2d.ObjectConfig object_config = 1;
+// repeated .rl2d.ObjectsConfig.ObjectConfig object_config = 1;
 inline int ObjectsConfig::object_config_size() const {
   return object_config_.size();
 }
 inline void ObjectsConfig::clear_object_config() {
   object_config_.Clear();
 }
-inline const ::rl2d::ObjectConfig& ObjectsConfig::object_config(int index) const {
+inline const ::rl2d::ObjectsConfig_ObjectConfig& ObjectsConfig::object_config(int index) const {
   return object_config_.Get(index);
 }
-inline ::rl2d::ObjectConfig* ObjectsConfig::mutable_object_config(int index) {
+inline ::rl2d::ObjectsConfig_ObjectConfig* ObjectsConfig::mutable_object_config(int index) {
   return object_config_.Mutable(index);
 }
-inline ::rl2d::ObjectConfig* ObjectsConfig::add_object_config() {
+inline ::rl2d::ObjectsConfig_ObjectConfig* ObjectsConfig::add_object_config() {
   return object_config_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig >&
+inline const ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig >&
 ObjectsConfig::object_config() const {
   return object_config_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectConfig >*
+inline ::google::protobuf::RepeatedPtrField< ::rl2d::ObjectsConfig_ObjectConfig >*
 ObjectsConfig::mutable_object_config() {
   return &object_config_;
 }
@@ -1882,29 +2374,482 @@ inline void DetectorConfig::set_match_threshold(float value) {
   match_threshold_ = value;
 }
 
-// repeated float steps_each_pyramid = 2 [packed = true];
+// repeated int32 steps_each_pyramid = 2 [packed = true];
 inline int DetectorConfig::steps_each_pyramid_size() const {
   return steps_each_pyramid_.size();
 }
 inline void DetectorConfig::clear_steps_each_pyramid() {
   steps_each_pyramid_.Clear();
 }
-inline float DetectorConfig::steps_each_pyramid(int index) const {
+inline ::google::protobuf::int32 DetectorConfig::steps_each_pyramid(int index) const {
   return steps_each_pyramid_.Get(index);
 }
-inline void DetectorConfig::set_steps_each_pyramid(int index, float value) {
+inline void DetectorConfig::set_steps_each_pyramid(int index, ::google::protobuf::int32 value) {
   steps_each_pyramid_.Set(index, value);
 }
-inline void DetectorConfig::add_steps_each_pyramid(float value) {
+inline void DetectorConfig::add_steps_each_pyramid(::google::protobuf::int32 value) {
   steps_each_pyramid_.Add(value);
 }
-inline const ::google::protobuf::RepeatedField< float >&
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
 DetectorConfig::steps_each_pyramid() const {
   return steps_each_pyramid_;
 }
-inline ::google::protobuf::RepeatedField< float >*
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 DetectorConfig::mutable_steps_each_pyramid() {
   return &steps_each_pyramid_;
+}
+
+// -------------------------------------------------------------------
+
+// DataSource
+
+// required .rl2d.DataSource.DataType type = 1;
+inline bool DataSource::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DataSource::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DataSource::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DataSource::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::rl2d::DataSource_DataType DataSource::type() const {
+  return static_cast< ::rl2d::DataSource_DataType >(type_);
+}
+inline void DataSource::set_type(::rl2d::DataSource_DataType value) {
+  assert(::rl2d::DataSource_DataType_IsValid(value));
+  set_has_type();
+  type_ = value;
+}
+
+// optional string imgs_dir = 2;
+inline bool DataSource::has_imgs_dir() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DataSource::set_has_imgs_dir() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DataSource::clear_has_imgs_dir() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DataSource::clear_imgs_dir() {
+  if (imgs_dir_ != &::google::protobuf::internal::kEmptyString) {
+    imgs_dir_->clear();
+  }
+  clear_has_imgs_dir();
+}
+inline const ::std::string& DataSource::imgs_dir() const {
+  return *imgs_dir_;
+}
+inline void DataSource::set_imgs_dir(const ::std::string& value) {
+  set_has_imgs_dir();
+  if (imgs_dir_ == &::google::protobuf::internal::kEmptyString) {
+    imgs_dir_ = new ::std::string;
+  }
+  imgs_dir_->assign(value);
+}
+inline void DataSource::set_imgs_dir(const char* value) {
+  set_has_imgs_dir();
+  if (imgs_dir_ == &::google::protobuf::internal::kEmptyString) {
+    imgs_dir_ = new ::std::string;
+  }
+  imgs_dir_->assign(value);
+}
+inline void DataSource::set_imgs_dir(const char* value, size_t size) {
+  set_has_imgs_dir();
+  if (imgs_dir_ == &::google::protobuf::internal::kEmptyString) {
+    imgs_dir_ = new ::std::string;
+  }
+  imgs_dir_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* DataSource::mutable_imgs_dir() {
+  set_has_imgs_dir();
+  if (imgs_dir_ == &::google::protobuf::internal::kEmptyString) {
+    imgs_dir_ = new ::std::string;
+  }
+  return imgs_dir_;
+}
+inline ::std::string* DataSource::release_imgs_dir() {
+  clear_has_imgs_dir();
+  if (imgs_dir_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = imgs_dir_;
+    imgs_dir_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void DataSource::set_allocated_imgs_dir(::std::string* imgs_dir) {
+  if (imgs_dir_ != &::google::protobuf::internal::kEmptyString) {
+    delete imgs_dir_;
+  }
+  if (imgs_dir) {
+    set_has_imgs_dir();
+    imgs_dir_ = imgs_dir;
+  } else {
+    clear_has_imgs_dir();
+    imgs_dir_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string offline_video_path = 3;
+inline bool DataSource::has_offline_video_path() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DataSource::set_has_offline_video_path() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DataSource::clear_has_offline_video_path() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DataSource::clear_offline_video_path() {
+  if (offline_video_path_ != &::google::protobuf::internal::kEmptyString) {
+    offline_video_path_->clear();
+  }
+  clear_has_offline_video_path();
+}
+inline const ::std::string& DataSource::offline_video_path() const {
+  return *offline_video_path_;
+}
+inline void DataSource::set_offline_video_path(const ::std::string& value) {
+  set_has_offline_video_path();
+  if (offline_video_path_ == &::google::protobuf::internal::kEmptyString) {
+    offline_video_path_ = new ::std::string;
+  }
+  offline_video_path_->assign(value);
+}
+inline void DataSource::set_offline_video_path(const char* value) {
+  set_has_offline_video_path();
+  if (offline_video_path_ == &::google::protobuf::internal::kEmptyString) {
+    offline_video_path_ = new ::std::string;
+  }
+  offline_video_path_->assign(value);
+}
+inline void DataSource::set_offline_video_path(const char* value, size_t size) {
+  set_has_offline_video_path();
+  if (offline_video_path_ == &::google::protobuf::internal::kEmptyString) {
+    offline_video_path_ = new ::std::string;
+  }
+  offline_video_path_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* DataSource::mutable_offline_video_path() {
+  set_has_offline_video_path();
+  if (offline_video_path_ == &::google::protobuf::internal::kEmptyString) {
+    offline_video_path_ = new ::std::string;
+  }
+  return offline_video_path_;
+}
+inline ::std::string* DataSource::release_offline_video_path() {
+  clear_has_offline_video_path();
+  if (offline_video_path_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = offline_video_path_;
+    offline_video_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void DataSource::set_allocated_offline_video_path(::std::string* offline_video_path) {
+  if (offline_video_path_ != &::google::protobuf::internal::kEmptyString) {
+    delete offline_video_path_;
+  }
+  if (offline_video_path) {
+    set_has_offline_video_path();
+    offline_video_path_ = offline_video_path;
+  } else {
+    clear_has_offline_video_path();
+    offline_video_path_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// HSColorHistogram
+
+// required bool hs_color_refinement = 1;
+inline bool HSColorHistogram::has_hs_color_refinement() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HSColorHistogram::set_has_hs_color_refinement() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HSColorHistogram::clear_has_hs_color_refinement() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HSColorHistogram::clear_hs_color_refinement() {
+  hs_color_refinement_ = false;
+  clear_has_hs_color_refinement();
+}
+inline bool HSColorHistogram::hs_color_refinement() const {
+  return hs_color_refinement_;
+}
+inline void HSColorHistogram::set_hs_color_refinement(bool value) {
+  set_has_hs_color_refinement();
+  hs_color_refinement_ = value;
+}
+
+// optional float threshold = 2 [default = 0.6];
+inline bool HSColorHistogram::has_threshold() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HSColorHistogram::set_has_threshold() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HSColorHistogram::clear_has_threshold() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HSColorHistogram::clear_threshold() {
+  threshold_ = 0.6f;
+  clear_has_threshold();
+}
+inline float HSColorHistogram::threshold() const {
+  return threshold_;
+}
+inline void HSColorHistogram::set_threshold(float value) {
+  set_has_threshold();
+  threshold_ = value;
+}
+
+// optional int32 h_bin = 3 [default = 30];
+inline bool HSColorHistogram::has_h_bin() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HSColorHistogram::set_has_h_bin() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HSColorHistogram::clear_has_h_bin() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HSColorHistogram::clear_h_bin() {
+  h_bin_ = 30;
+  clear_has_h_bin();
+}
+inline ::google::protobuf::int32 HSColorHistogram::h_bin() const {
+  return h_bin_;
+}
+inline void HSColorHistogram::set_h_bin(::google::protobuf::int32 value) {
+  set_has_h_bin();
+  h_bin_ = value;
+}
+
+// optional int32 s_bin = 4 [default = 4];
+inline bool HSColorHistogram::has_s_bin() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HSColorHistogram::set_has_s_bin() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HSColorHistogram::clear_has_s_bin() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HSColorHistogram::clear_s_bin() {
+  s_bin_ = 4;
+  clear_has_s_bin();
+}
+inline ::google::protobuf::int32 HSColorHistogram::s_bin() const {
+  return s_bin_;
+}
+inline void HSColorHistogram::set_s_bin(::google::protobuf::int32 value) {
+  set_has_s_bin();
+  s_bin_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// RuntimeConfig
+
+// required .rl2d.ObjectsConfig objects_config = 1;
+inline bool RuntimeConfig::has_objects_config() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RuntimeConfig::set_has_objects_config() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RuntimeConfig::clear_has_objects_config() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RuntimeConfig::clear_objects_config() {
+  if (objects_config_ != NULL) objects_config_->::rl2d::ObjectsConfig::Clear();
+  clear_has_objects_config();
+}
+inline const ::rl2d::ObjectsConfig& RuntimeConfig::objects_config() const {
+  return objects_config_ != NULL ? *objects_config_ : *default_instance_->objects_config_;
+}
+inline ::rl2d::ObjectsConfig* RuntimeConfig::mutable_objects_config() {
+  set_has_objects_config();
+  if (objects_config_ == NULL) objects_config_ = new ::rl2d::ObjectsConfig;
+  return objects_config_;
+}
+inline ::rl2d::ObjectsConfig* RuntimeConfig::release_objects_config() {
+  clear_has_objects_config();
+  ::rl2d::ObjectsConfig* temp = objects_config_;
+  objects_config_ = NULL;
+  return temp;
+}
+inline void RuntimeConfig::set_allocated_objects_config(::rl2d::ObjectsConfig* objects_config) {
+  delete objects_config_;
+  objects_config_ = objects_config;
+  if (objects_config) {
+    set_has_objects_config();
+  } else {
+    clear_has_objects_config();
+  }
+}
+
+// required .rl2d.CameraIntrinsic cam_intrinsic = 2;
+inline bool RuntimeConfig::has_cam_intrinsic() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RuntimeConfig::set_has_cam_intrinsic() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RuntimeConfig::clear_has_cam_intrinsic() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RuntimeConfig::clear_cam_intrinsic() {
+  if (cam_intrinsic_ != NULL) cam_intrinsic_->::rl2d::CameraIntrinsic::Clear();
+  clear_has_cam_intrinsic();
+}
+inline const ::rl2d::CameraIntrinsic& RuntimeConfig::cam_intrinsic() const {
+  return cam_intrinsic_ != NULL ? *cam_intrinsic_ : *default_instance_->cam_intrinsic_;
+}
+inline ::rl2d::CameraIntrinsic* RuntimeConfig::mutable_cam_intrinsic() {
+  set_has_cam_intrinsic();
+  if (cam_intrinsic_ == NULL) cam_intrinsic_ = new ::rl2d::CameraIntrinsic;
+  return cam_intrinsic_;
+}
+inline ::rl2d::CameraIntrinsic* RuntimeConfig::release_cam_intrinsic() {
+  clear_has_cam_intrinsic();
+  ::rl2d::CameraIntrinsic* temp = cam_intrinsic_;
+  cam_intrinsic_ = NULL;
+  return temp;
+}
+inline void RuntimeConfig::set_allocated_cam_intrinsic(::rl2d::CameraIntrinsic* cam_intrinsic) {
+  delete cam_intrinsic_;
+  cam_intrinsic_ = cam_intrinsic;
+  if (cam_intrinsic) {
+    set_has_cam_intrinsic();
+  } else {
+    clear_has_cam_intrinsic();
+  }
+}
+
+// required .rl2d.DetectorConfig detector_config = 3;
+inline bool RuntimeConfig::has_detector_config() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RuntimeConfig::set_has_detector_config() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RuntimeConfig::clear_has_detector_config() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RuntimeConfig::clear_detector_config() {
+  if (detector_config_ != NULL) detector_config_->::rl2d::DetectorConfig::Clear();
+  clear_has_detector_config();
+}
+inline const ::rl2d::DetectorConfig& RuntimeConfig::detector_config() const {
+  return detector_config_ != NULL ? *detector_config_ : *default_instance_->detector_config_;
+}
+inline ::rl2d::DetectorConfig* RuntimeConfig::mutable_detector_config() {
+  set_has_detector_config();
+  if (detector_config_ == NULL) detector_config_ = new ::rl2d::DetectorConfig;
+  return detector_config_;
+}
+inline ::rl2d::DetectorConfig* RuntimeConfig::release_detector_config() {
+  clear_has_detector_config();
+  ::rl2d::DetectorConfig* temp = detector_config_;
+  detector_config_ = NULL;
+  return temp;
+}
+inline void RuntimeConfig::set_allocated_detector_config(::rl2d::DetectorConfig* detector_config) {
+  delete detector_config_;
+  detector_config_ = detector_config;
+  if (detector_config) {
+    set_has_detector_config();
+  } else {
+    clear_has_detector_config();
+  }
+}
+
+// required .rl2d.DataSource data_source = 4;
+inline bool RuntimeConfig::has_data_source() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RuntimeConfig::set_has_data_source() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RuntimeConfig::clear_has_data_source() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RuntimeConfig::clear_data_source() {
+  if (data_source_ != NULL) data_source_->::rl2d::DataSource::Clear();
+  clear_has_data_source();
+}
+inline const ::rl2d::DataSource& RuntimeConfig::data_source() const {
+  return data_source_ != NULL ? *data_source_ : *default_instance_->data_source_;
+}
+inline ::rl2d::DataSource* RuntimeConfig::mutable_data_source() {
+  set_has_data_source();
+  if (data_source_ == NULL) data_source_ = new ::rl2d::DataSource;
+  return data_source_;
+}
+inline ::rl2d::DataSource* RuntimeConfig::release_data_source() {
+  clear_has_data_source();
+  ::rl2d::DataSource* temp = data_source_;
+  data_source_ = NULL;
+  return temp;
+}
+inline void RuntimeConfig::set_allocated_data_source(::rl2d::DataSource* data_source) {
+  delete data_source_;
+  data_source_ = data_source;
+  if (data_source) {
+    set_has_data_source();
+  } else {
+    clear_has_data_source();
+  }
+}
+
+// required .rl2d.HSColorHistogram hs_color_hist = 5;
+inline bool RuntimeConfig::has_hs_color_hist() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void RuntimeConfig::set_has_hs_color_hist() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void RuntimeConfig::clear_has_hs_color_hist() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void RuntimeConfig::clear_hs_color_hist() {
+  if (hs_color_hist_ != NULL) hs_color_hist_->::rl2d::HSColorHistogram::Clear();
+  clear_has_hs_color_hist();
+}
+inline const ::rl2d::HSColorHistogram& RuntimeConfig::hs_color_hist() const {
+  return hs_color_hist_ != NULL ? *hs_color_hist_ : *default_instance_->hs_color_hist_;
+}
+inline ::rl2d::HSColorHistogram* RuntimeConfig::mutable_hs_color_hist() {
+  set_has_hs_color_hist();
+  if (hs_color_hist_ == NULL) hs_color_hist_ = new ::rl2d::HSColorHistogram;
+  return hs_color_hist_;
+}
+inline ::rl2d::HSColorHistogram* RuntimeConfig::release_hs_color_hist() {
+  clear_has_hs_color_hist();
+  ::rl2d::HSColorHistogram* temp = hs_color_hist_;
+  hs_color_hist_ = NULL;
+  return temp;
+}
+inline void RuntimeConfig::set_allocated_hs_color_hist(::rl2d::HSColorHistogram* hs_color_hist) {
+  delete hs_color_hist_;
+  hs_color_hist_ = hs_color_hist;
+  if (hs_color_hist) {
+    set_has_hs_color_hist();
+  } else {
+    clear_has_hs_color_hist();
+  }
 }
 
 
@@ -1916,6 +2861,10 @@ DetectorConfig::mutable_steps_each_pyramid() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::rl2d::DataSource_DataType>() {
+  return ::rl2d::DataSource_DataType_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

@@ -81,10 +81,10 @@ namespace rl2d
 		const int objectNum = objectsConfig.object_config_size();
 		CHECK(objectNum>0) << "No template images.";
 
-		//#pragma omp parallel for
+		#pragma omp parallel for
 		for(int i=0; i<objectNum; ++i)
 		{
-			const ObjectConfig &objectConfig = objectsConfig.object_config(i);
+			const ObjectsConfig_ObjectConfig &objectConfig = objectsConfig.object_config(i);
 			const int classId = objectConfig.id();
 			const std::string &className = objectConfig.name();
 			//const std::string &imagesDir = objectConfig.img_dir();
@@ -140,7 +140,7 @@ namespace rl2d
 			std::vector<cv::Matx61f> posesParam;
 			for(int j=0; j<objectConfig.imagedir_posefile_pair_size(); ++j)
 			{
-				const ObjectConfig_ImageDirAndPoseFilePair& imagedir_posefile = objectConfig.imagedir_posefile_pair(j);
+				const ObjectsConfig_ObjectConfig_ImageDirAndPoseFilePair& imagedir_posefile = objectConfig.imagedir_posefile_pair(j);
 				const std::string &imagesDir = imagedir_posefile.img_dir();
 				const std::string &posePath = imagedir_posefile.pose_path();
 
@@ -182,7 +182,7 @@ namespace rl2d
 			// read obj file
 			GLMmodel *modelTmp = glmReadOBJ(const_cast<char*>(modelPath.c_str()));
 
-			//#pragma omp critical
+			#pragma omp critical
 			{
 				images.insert(std::pair<int, std::vector<cv::Mat> >(classId, imgs));
 				boundingBoxes.insert(std::pair<int, std::vector<cv::Rect> >(classId, bbs));
@@ -202,8 +202,7 @@ namespace rl2d
 		float minLatitude, float maxLatitude, float latitudeStep,
 		float minLongitude, float maxLongitude, float longitudeStep,
 		float minInplane, float maxInplane, float inplaneStep,
-		std::vector<cv::Mat> &images,
-		std::vector<cv::Matx61f> &poses)
+		const std::string &out_dir)
 	{
 		const float nearPlane = 0.01;
 		const float farPlane = 1000;
@@ -211,10 +210,8 @@ namespace rl2d
 			minRadius, maxRadius, radiusStep, 
 			minLatitude, maxLatitude, latitudeStep,
 			minLongitude, maxLongitude, longitudeStep,
-			minInplane, maxInplane, inplaneStep);
-
-		images = GLRender::m_viewImgs;
-		poses = GLRender::m_viewPoses;
+			minInplane, maxInplane, inplaneStep,
+			out_dir);
 	}
 
 }

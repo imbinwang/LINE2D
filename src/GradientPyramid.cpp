@@ -1,7 +1,7 @@
 #include "..\include\GradientPyramid.h"
 #include <opencv2\opencv.hpp>
 
-#define _TIMER_
+//#define _TIMER_
 #ifdef _TIMER_
 #include "..\include\util\CvUtility.h"
 static Timer t;

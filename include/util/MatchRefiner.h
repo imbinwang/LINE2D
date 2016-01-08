@@ -19,7 +19,7 @@ namespace rl2d
 			int HBIN, int SBIN,
 			std::map<int, std::vector<cv::Mat> > &hsHistograms);
 
-		static void MatchRefiner::refine(std::vector<Match>& candidatesMatches, 
+		static void refine(std::vector<Match>& candidatesMatches, 
 			std::vector<cv::Rect> &correspondingRects,
 			const cv::Mat& frameImg,
 			const std::map<int, std::vector<cv::Rect> > &templateImgBoundingBoxes,

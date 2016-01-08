@@ -40,8 +40,7 @@ namespace rl2d
 			float minLatitude, float maxLatitude, float latitudeStep,
 			float minLongitude, float maxLongitude, float longitudeStep,
 			float minInplane, float maxInplane, float inplaneStep,
-			std::vector<cv::Mat> &images,
-			std::vector<cv::Matx61f> &poses);
+			const std::string &out_dir);
 
 	};
 
