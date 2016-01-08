@@ -1,0 +1,81 @@
+# configuration information of objects that will be detected
+objects_config
+{
+    object_config
+	{
+		id: 0
+		name: "HBLTS8"
+		
+		imageDir_poseFile_pair
+		{
+			img_dir: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\templates\\HBLTS8_70_cut"
+			pose_path: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\poses\\HBLTS8_70_cut.txt"
+		}
+		imageDir_poseFile_pair
+		{
+			img_dir: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\templates\\HBLTS8_80_cut"
+			pose_path: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\poses\\HBLTS8_80_cut.txt"
+		}
+		imageDir_poseFile_pair
+		{
+			img_dir: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\templates\\HBLTS8_90_cut"
+			pose_path: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\poses\\HBLTS8_90_cut.txt"
+		}
+		
+		model_path: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\objs\\HBLTS8_C.obj"
+		color_hist_dir: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\color_histograms\\d"
+		
+		online_rendering_params
+		{
+			min_radius: 70
+			max_radius: 90
+			radius_step: 10
+			min_latitude: 40
+			max_latitude: 80
+			latitude_step: 10
+			min_longitude: 0
+			max_longitude: 350
+			longitude_step: 10
+			min_inplane: -15
+			max_inplane: 15
+			inplane_step: 15
+			
+			out_dir: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\render\\HBLTS8_r"
+		}
+	}
+}
+
+cam_intrinsic
+{
+    fx: 804.53
+	fy: 804.53
+	cx: 319.5
+	cy: 239.5
+	distortions: 0.10895365623692939
+	distortions: -2.4227559050149443
+	distortions:  0
+	distortions: 0
+	distortions: 13.608371846992902
+}
+
+detector_config
+{
+	match_threshold: 90.0
+	steps_each_pyramid: 8
+}
+
+data_source
+{
+	type: IMAGES # 3 type (IMAGES:0,OFFLINE_VIDEO:1,ONLINE_VIDEO:2)
+	
+	# if type is IMAGES, uncomment the next line
+	imgs_dir: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\snapshot"
+	
+	# if type is OFFLINE_VIDEO, uncomment the next line
+	# offline_video_path: "D:\\project\\VSProject\\LINE2D4IKEA\\Bin_LINE2DIKEA\\data\\HBLTS8\\you_video.avi"
+}
+
+hs_color_hist
+{
+	hs_color_refinement: true
+}
